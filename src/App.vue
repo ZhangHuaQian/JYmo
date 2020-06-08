@@ -3,6 +3,31 @@
     <router-view />
   </div>
 </template>
+<script>
+import {serverIP as ip} from '@/utils/serverIP'
+export default {
+  methods: {
+    _isMobile() {
+      let flag = navigator.userAgent.match(
+        /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+      );
+      return flag;
+    }
+  },
+  mounted() {
+    if (this._isMobile()) {
+      alert("手机端");
+      this.$router.replace("/home");
+      // window.location.href="www.360.com"
+    } else {
+      alert("pc端");
+           
+window.location.replace("http://www.baidu.com");
+
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 #app {

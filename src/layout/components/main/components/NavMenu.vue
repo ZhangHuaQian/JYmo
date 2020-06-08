@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <van-row
       type="flex"
       class="row-bg NavMenu-wrapper"
@@ -9,10 +9,10 @@
     />
 
     <van-row>
-      <van-search v-if="!$route.meta.navBG" v-model="seach" shape="round" placeholder="请输入搜索关键词"/>			
-<div style="clear: both;"></div>
+      <van-search v-if="!$route.meta.navBG" v-model="seach" shape="round" placeholder="请输入搜索关键词" />
+      <div style="clear: both;"></div>
 
-      <van-grid :column-num="3">
+      <!-- <van-grid :column-num="3">
         <van-grid-item @click="toNewPagesIndex(list[0].id)" v-if="!$route.meta.navBG" icon="wap-home-o"  :text="list[0].name"/>
         <van-grid-item @click="toNavigation(list[1].id,list[1].name)" v-if="!$route.meta.navBG" icon="photo-o"  :text="list[1].name" />
         <van-grid-item
@@ -79,100 +79,104 @@
         />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to text="警院影像" />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to="/home/index" text="学校首页" />
+      </van-grid>-->
+      
+      <!-- 导航栏开始 -->
+      <van-grid :column-num="3">
+        <van-grid-item v-for="item in list" :key="item.id" icon="photo-o" :to="item.url" :text="item.name" />
       </van-grid>
-	  
+      <!-- 导航栏结束 -->
 
-      <van-nav-bar
-        :title="name"
-		to="this.$router.go(-1)"
-        left-arrow
-		v-if="name == ''"
-      />
+      <van-nav-bar :title="name" to="this.$router.go(-1)" left-arrow v-if="name == ''" />
     </van-row>
   </div>
 </template>
 
 <script>
-import { serverip as ip } from '@/utils/serverIP'
+import { serverip as ip } from "@/utils/serverIP";
 export default {
   data() {
     return {
-	  pageId:0,
-	  list:[],
-      activeIndex: '1',
-      seach: '',
-	  name:'专题',
+      pageId: 0,
+      list: [],
+      activeIndex: "1",
+      seach: "",
+      name: "专题",
       ggfw_show: false
-    }
+    };
   },
   mounted() {
-  	this.getList();
-	this.toNewPage();
-	this.getTitle()
+    this.getList();
+    this.toNewPage();
+    this.getTitle();
   },
   methods: {
-	  getTitle(){
-		  this.name = this.$route.query.name
-	  },
-	  toNavigation(id,name){
-this.$router.push({
-          path: '/Navigation/index',
-          query: {
-            id: id,
-			name:name
-          }
-        })
-	  },
+    getTitle() {
+      this.name = this.$route.query.name;
+    },
+    toNavigation(id, name) {
+      this.$router.push({
+        path: "/Navigation/index",
+        query: {
+          id: id,
+          name: name
+        }
+      });
+    },
     handleSelect(key, keyPath) {
-      console.log(key, keyPath)
+      console.log(key, keyPath);
     },
-	getList(){
-	this.axios.post(ip+'/unauth/column/selectList',
-			// {id:this.id}
-	  ).then((res)=>{
-				 console.log(res)
-				  this.list=res.data.data
-				  console.log('url列表',this.list)
-			  })
-	},
-	toNewPage(a){//页面跳转传参
-	this.pageId = a
-	},
-	toNewPages(id,url){
-this.$router.push({
-          path: url,
-          query: {
-            id: id
-          }
-        })
-  },
-  toNewPagess(id,url){
-	  console.log(url+'是')
-  this.$router.push({
-            path:'/common/commonlist',
-            query: {
-              id: id
-            }
-          })
+    getList() {
+      this.axios
+        .post(
+          ip + "/unauth/column/selectList"
+          // {id:this.id}
+        )
+        .then(res => {
+          console.log(res, "导航栏");
+          this.list = res.data.data;
+          console.log("url列表", this.list);
+        });
     },
-	toNewPagesListSeven(id){
-  this.$router.push({
-            path:'/common/commonlistSeven',
-            query: {
-              id: id
-            }
-          })
+    toNewPage(a) {
+      //页面跳转传参
+      this.pageId = a;
     },
-	toNewPagesIndex(id){
-		this.$router.push({
-		          path:'/secondaryHome/index',
-		          query: {
-		            id: id
-		          }
-		        })
-	}
+    toNewPages(id, url) {
+      this.$router.push({
+        path: url,
+        query: {
+          id: id
+        }
+      });
+    },
+    toNewPagess(id, url) {
+      console.log(url + "是");
+      this.$router.push({
+        path: "/common/commonlist",
+        query: {
+          id: id
+        }
+      });
+    },
+    toNewPagesListSeven(id) {
+      this.$router.push({
+        path: "/common/commonlistSeven",
+        query: {
+          id: id
+        }
+      });
+    },
+    toNewPagesIndex(id) {
+      this.$router.push({
+        path: "/secondaryHome/index",
+        query: {
+          id: id
+        }
+      });
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
