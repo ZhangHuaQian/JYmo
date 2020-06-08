@@ -17,12 +17,12 @@ export default {
   mounted() {
     if (this._isMobile()) {
       alert("手机端");
-      this.$router.replace("/home");
+      // this.$router.replace("/home");
       // window.location.href="www.360.com"
     } else {
       alert("pc端");
-           
-window.location.replace("http://www.baidu.com");
+            // this.$router.replace("/home");
+// window.location.replace("http://www.baidu.com");
 
     }
   }

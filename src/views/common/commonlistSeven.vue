@@ -56,7 +56,8 @@ this.getId()
 		  getlist(){//根据栏目id获取子栏目列表
 		  console.log(this.$route.query.id,this.currentPage,'1111')
 			  this.axios.post(ip+'/unauth/news/selectList',
-			  		{columnId:this.$route.query.id,pageNum:this.currentPage}
+					  {columnId:this.$route.query.id,pageNum:this.currentPage}
+					  
 			    ).then((res)=>{
 			  			 console.log('列表:',res)
 			  			  this.list=res.data.data.data

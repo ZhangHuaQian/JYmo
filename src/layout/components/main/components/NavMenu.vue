@@ -12,7 +12,7 @@
       <van-search v-if="!$route.meta.navBG" v-model="seach" shape="round" placeholder="请输入搜索关键词" />
       <div style="clear: both;"></div>
 
-      <!-- <van-grid :column-num="3">
+      <van-grid :column-num="3">
         <van-grid-item @click="toNewPagesIndex(list[0].id)" v-if="!$route.meta.navBG" icon="wap-home-o"  :text="list[0].name"/>
         <van-grid-item @click="toNavigation(list[1].id,list[1].name)" v-if="!$route.meta.navBG" icon="photo-o"  :text="list[1].name" />
         <van-grid-item
@@ -79,12 +79,12 @@
         />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to text="警院影像" />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to="/home/index" text="学校首页" />
-      </van-grid>-->
+      </van-grid>
       
       <!-- 导航栏开始 -->
-      <van-grid :column-num="3">
-        <van-grid-item v-for="item in list" :key="item.id" icon="photo-o" :to="item.url" :text="item.name" />
-      </van-grid>
+      <!-- <van-grid :column-num="3">
+        <van-grid-item v-for="item in list" :key="item.id" icon="photo-o" :to="{path:item.url,query:{id:item.id}}" :text="item.name" />
+      </van-grid> -->
       <!-- 导航栏结束 -->
 
       <van-nav-bar :title="name" to="this.$router.go(-1)" left-arrow v-if="name == ''" />
