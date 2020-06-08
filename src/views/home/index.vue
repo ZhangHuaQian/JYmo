@@ -74,11 +74,12 @@
                       >{{list[0].subTitle}}</p>
                       <van-row type="flex" justify="end">
                         <van-col
-                          span="6"
+                          span="8"
                           style="font-size:12px;margin-right:20px"
                         >
-                        <!-- [{{  getMoment(item.modifyTime, 'YYYY-MM-DD') }}] -->
-                        {{ list[0].modifyTime | formatDate }}
+                        
+                        {{  getMoment(list[0].modifyTime, 'YYYY-MM-DD') }}
+                        <!-- {{ list[0].modifyTime | formatDate }} -->
                         </van-col>
                       </van-row>
                     </van-col>
@@ -127,7 +128,7 @@
                 >更多></van-col>
               </van-row>
               <van-row class="wrapper">
-                <div class="list">
+                <div class="list" style="padding:5px">
                   <van-row
                     v-for="(item,index) in listFirst"
                     :key="index"
@@ -165,7 +166,7 @@
                 >更多></van-col>
               </van-row>
               <van-row class="wrapper">
-                <div class="list">
+                <div class="list" style="padding:5px">
                   <van-row
                     v-for="(item,index) in listSecond"
                     :key="index"
@@ -204,7 +205,7 @@
                 >更多></van-col>
               </van-row>
               <van-row class="wrapper">
-                <div class="list">
+                <div class="list" style="padding:5px">
                   <van-row
                     v-for="(item,index) in listThrd"
                     :key="index"
@@ -241,7 +242,7 @@
                 >更多></van-col>
               </van-row>
               <van-row class="wrapper">
-                <div class="list">
+                <div class="list" style="padding:5px">
                   <van-row
                     v-for="(item,index) in listFour"
                     :key="index"
