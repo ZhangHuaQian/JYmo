@@ -1,5 +1,11 @@
 <template>
   <div class="home-container">
+	  <van-row>
+		  <van-col>
+		  <div v-html="jianjie.content"></div>
+	  </van-col>
+	  </van-row>
+	  
     <van-divider />
     <van-row v-for="item in list" :key="item.id" @click="toDetailPage(item.id,item.siteId)">
 
@@ -28,6 +34,7 @@ import { serverip as ip } from '@/utils/serverIP'
 	  data() {
 	    return {
 			currentPage:1,
+			jianjie:'',
 list:[],
 listLanse:[],
 	    }
@@ -40,8 +47,9 @@ listLanse:[],
 	     }
 	   },
 	  mounted() {
-		  this.getlist()
-this.getId()
+		  this.getlist(),
+		  this.getdh()
+
 	  },
 	  methods: {
 		  toDetailPage(id,siteId){//跳转至详情页
@@ -65,15 +73,15 @@ this.getId()
 						  // this.getlanse()
 			  		  })
 		  },
-		  // getlanse(){//根据栏目id获取子栏目列表
-		  // 			  this.axios.post('/gxjcxy/unauth/column/selectChild',
-		  // 			  		{id:this.list[0].id}
-		  // 			    ).then((res)=>{
-		  // 			  			 console.log('蓝色的：',res)
-		  // 			  			  this.listLanse=res.data.data  
-		  // 			  			  // console.log(this.list)
-		  // 			  		  })
-		  // },
+		  getdh(){
+		  			  this.axios.post(ip+'/unauth/infoPage/select',
+		  			  		{columnId:this.$route.query.id}
+		  			    ).then((res)=>{
+		  			  			 console.log('简介',res)
+		  			  			  this.jianjie=res.data.data  
+		  			  			  console.log(this.jianjie,'258')
+		  			  		  })
+		  },
 	  }
 	}
 </script>
