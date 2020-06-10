@@ -19,3 +19,11 @@ commonlistEight，commonlistFifth,commonlistFourth, commonlistSix,commonlistThir
 details  -----新闻详情
 
 departmentHome   ---->  /common/commonlistSeven -----> details
+		
+
+
+commonlistSeven页面数据
+http://171.111.153.241:8095/unauth/news/selectList { columnId: 92  pageNum: 1 pageSize: 10}	
+
+
+
