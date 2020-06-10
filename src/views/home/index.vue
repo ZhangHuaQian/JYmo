@@ -533,6 +533,7 @@ export default {
   },
   data() {
     return {
+      image:'',
       list: [],
       listsec: [],
       listFirst: [],
@@ -565,7 +566,7 @@ export default {
   methods: {
     moreNewsList(id, name) {
       this.$router.push({
-        path: "/common/commonlistSeven",
+        path: "/common/commonlist2",
         query: {
           id: id,
           title: name
@@ -596,32 +597,22 @@ export default {
       this.axios
         .post(ip + "/unauth/column/selectChild", { id: 36 })
         .then(res => {
-          console.log("蓝色栏目：", res);
+          console.log("蓝色栏目：1", res);
           this.listsec = res.data.data;
           this.getList();
           // console.log(this.listsec)
         });
     },
-    getListZT() {
-      //获取首页的专题网站
-      this.axios
-        .post(ip + "/unauth/subject/selectList", { pageNum:1,pageSize:10 })
-        .then(res => {
-          console.log("zt：", res);
-          this.zt = res.data.data.data;
-          console.log(this.zt.url)
-          this.getList();
-          // console.log(this.listsec)
-        });
-    },
+    
     getList() {
+      console.log(this.listsec[0].id,'4444')
       //新闻0
       this.axios
         .post(ip + "/unauth/news/selectList", {
           columnId: this.listsec[0].id
         })
         .then(res => {
-          console.log("单页面内容:", res);
+          console.log("单页面内容:3", res);
           this.list = res.data.data.data;
           console.log("新闻0:", this.list);
           this.getListFirst();
@@ -635,7 +626,7 @@ export default {
         })
         .then(res => {
           this.listFirst = res.data.data.data;
-          console.log("新闻1:", this.listFirst);
+          console.log("新闻1:4", this.listFirst);
           this.getListSecond();
         });
     },
@@ -647,7 +638,7 @@ export default {
         })
         .then(res => {
           this.listSecond = res.data.data.data;
-          console.log("新闻2:", this.listSecond);
+          console.log("新闻2:5", this.listSecond);
           this.getListThrd();
         });
     },
@@ -659,7 +650,7 @@ export default {
         })
         .then(res => {
           this.listThrd = res.data.data.data;
-          console.log("新闻3:", this.listThrd);
+          console.log("新闻3:6", this.listThrd);
           this.getListFour();
         });
     },
@@ -671,7 +662,7 @@ export default {
         })
         .then(res => {
           this.listFour = res.data.data.data;
-          console.log("新闻4:", this.listFour);
+          console.log("新闻4:7", this.listFour);
           this.getListFive();
         });
     },
@@ -683,7 +674,7 @@ export default {
         })
         .then(res => {
           this.listFive = res.data.data.data;
-          console.log("新闻5:", this.listFive);
+          console.log("新闻5:8", this.listFive);
           this.getListSix();
         });
     },
@@ -698,7 +689,19 @@ export default {
         })
         .then(res => {
           this.listSix = res.data.data.data;
-          console.log("新闻6:", this.listSix);
+          console.log("新闻6:9", this.listSix);
+        });
+    },
+    getListZT() {
+      //获取首页的专题网站
+      this.axios
+        .post(ip + "/unauth/subject/selectList", { pageNum:1,pageSize:10 })
+        .then(res => {
+          console.log("zt：2", res);
+          this.zt = res.data.data.data;
+          console.log(this.zt.url)
+          this.getList();
+          // console.log(this.listsec)
         });
     }
   }

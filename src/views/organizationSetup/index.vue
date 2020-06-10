@@ -101,7 +101,7 @@ export default {
 	  },
 	  toNewpages(id){
 	  		  this.$router.push({
-	  		            path: '/rAcademy',
+	  		            path: '/college',
 	  		            query: {
 	  		              id: id
 	  		            }

@@ -10,3 +10,12 @@
 教学科研：	/common/commonlist2	/
 师资队伍：	/common/commonlist2	/
 学院概况：	/common/commonlist2	/
+学院首页：   	/collegeHome		/collegeHome
+
+
+
+commonlistEight，commonlistFifth,commonlistFourth, commonlistSix,commonlistThird,commonlisttwo,datails没接口
+
+details  -----新闻详情
+
+departmentHome   ---->  /common/commonlistSeven -----> details

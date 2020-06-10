@@ -111,12 +111,12 @@
                 :span="12"
                 :md="8"
                 style="margin-top:20px;padding:10px"
-				@click="toDetailPage(item.id,item.siteId)"
+                @click="toDetailPage(item.id,item.siteId)"
               >
-			  <div style="border: 1px solid #C1C1C1;width: 100%;height: 35vw;">
-				 <img :src="item.image">  
-			  </div>
-               
+                <div style="border: 1px solid #C1C1C1;width: 100%;height: 35vw;">
+                  <img :src="item.image" />
+                </div>
+
                 <van-row class="tzgg-images-item-content">
                   <h4
                     class="tzgg-images-item-content-title van-ellipsis"
@@ -152,7 +152,12 @@
             </van-row>
             <van-row class="wrapper" style="margin-top:20px;padding:10px">
               <div class="list">
-                <van-row v-for="item in listnewsSec" :key="item.id" class="list-item" @click="toDetailPage(item.id,item.siteId)">
+                <van-row
+                  v-for="item in listnewsSec"
+                  :key="item.id"
+                  class="list-item"
+                  @click="toDetailPage(item.id,item.siteId)"
+                >
                   <van-col
                     :span="2"
                     style="height:50px;"
@@ -197,7 +202,14 @@
             </van-row>
             <van-row class="wrapper" style="margin-top:20px;padding:10px">
               <div class="list">
-                <van-col v-for="item in listnewsThr" :key="item.id" class="wrapper-item" :span="24" style="margin-top:10px" @click="toDetailPage(item.id,item.siteId)">
+                <van-col
+                  v-for="item in listnewsThr"
+                  :key="item.id"
+                  class="wrapper-item"
+                  :span="24"
+                  style="margin-top:10px"
+                  @click="toDetailPage(item.id,item.siteId)"
+                >
                   <!-- <van-col :span="24">
                     <img src="@/assets/home/zhutu.png" />
                   </van-col>-->
@@ -217,23 +229,41 @@
 
                   <van-row style="background:rgba(238,238,238,1);height:8vh">
                     <van-col :span="4" style="margin:8px">
-                      <van-row style="" :span="22">
-                        <van-col :span="24" style="font-size:14px;line-height: 1.5em;" :offset="10">26</van-col>
+                      <van-row style :span="22">
+                        <van-col
+                          :span="24"
+                          style="font-size:14px;line-height: 1.5em;"
+                          :offset="10"
+                        >26</van-col>
                       </van-row>
                       <van-row style="border-top:1px solid #999;" :span="22">
-                        <van-col :span="24" style="font-size:14px;line-height: 1.5em;" :offset="2">2020/02</van-col>
+                        <van-col
+                          :span="24"
+                          style="font-size:14px;line-height: 1.5em;"
+                          :offset="2"
+                        >2020/02</van-col>
                       </van-row>
                     </van-col>
-                    <van-col :span="17" style="border-left:2px solid rgba(50,93,171,1);height:60%;margin-top:10px;padding-left:15px">
-                      <p :span="24" class="van-ellipsis" style="line-height: 1em;margin:0;font-size:20px;font-weight:400">{{item.subTitle}}</p>
-                      <p :span="24" class="van-ellipsis" style="line-height: 1em;margin:0;padding-top:4px">{{item.title}}</p>
+                    <van-col
+                      :span="17"
+                      style="border-left:2px solid rgba(50,93,171,1);height:60%;margin-top:10px;padding-left:15px"
+                    >
+                      <p
+                        :span="24"
+                        class="van-ellipsis"
+                        style="line-height: 1em;margin:0;font-size:20px;font-weight:400"
+                      >{{item.title}}</p>
+                      <p
+                        :span="24"
+                        class="van-ellipsis"
+                        style="line-height: 1em;margin:0;padding-top:4px"
+                      >{{item.subTitle}}</p>
                     </van-col>
                   </van-row>
                 </van-col>
                 <van-col :span="24">
                   <van-divider dashed />
                 </van-col>
-
               </div>
             </van-row>
           </van-row>
@@ -250,17 +280,19 @@
                 :span="12"
                 style="text-align: right;color:rgba(153,153,153,1);"
                 class="tit_rig"
-				@click="moreNewsList(lanse[3].id,lanse[3].name)"
+                @click="moreNewsList(lanse[3].id,lanse[3].name)"
               >
-                <a
-                  
-                  style="position: absolute;right: 1.0%;z-index: 3;"
-                >更多></a>
+                <a style="position: absolute;right: 1.0%;z-index: 3;">更多></a>
               </van-col>
             </van-row>
             <van-row class="wrapper" style="margin-top:20px;padding:10px">
               <div class="list">
-                <van-row v-for="item in listnewsFour" :key="item.id" class="list-item" @click="toDetailPage(item.id,item.siteId)">
+                <van-row
+                  v-for="item in listnewsFour"
+                  :key="item.id"
+                  class="list-item"
+                  @click="toDetailPage(item.id,item.siteId)"
+                >
                   <van-col
                     :span="2"
                     style="height:50px;"
@@ -377,34 +409,84 @@
             :span="11"
             style="text-align: right;color:rgba(153,153,153,1);"
             class="tit_rig"
-			@click="moreNewsList(lanse[4].id,lanse[4].name)"
+            @click="moreNewsList(lanse[4].id,lanse[4].name)"
           >更多></van-col>
         </van-row>
         <van-row
           class="tzgg-images"
           :gutter="24"
-          style="background:rgba(183,218,253,1);width:100VW;margin-left:-1.6%;padding-bottom:30px"
+          style="width:100VW;margin-left:-1.6%;padding-bottom:30px;height:100%;background: rgba(183, 218, 253, 1);"
         >
-          <van-col
-            v-for="item in listnewsFire"
-            :key="item.id"
-            class="tzgg-images-item"
-            :span="11"
-            :md="8"
-            style="margin-top:20px;margin-left:11px;margin-riglht:5px;background:rgba(255,255,255,1);padding:12px"
-			@click="toDetailPage(item.id,item.siteId)"
-          >
-            <img :src="item.image">
-            <van-row class="tzgg-images-item-content">
-              <h4
-                class="tzgg-images-item-content-title van-ellipsis"
-                style="font-size:18px"
-              >{{item.title}}</h4>
-              <p
-                class="tzgg-images-item-content-introduction van-multi-ellipsis--l2"
-                style="font-size:12px"
-              >{{item.subTitle}}</p>
-            </van-row>
+          <van-col :span="24" class="bumen">
+            <!-- <van-col :span="11" class="bumen-item" >
+              <van-row>
+                <van-col :span="24">
+                  <img src="http://171.111.153.241:8095//resources/2019/03/28/26925f80e13a680003ce4d80f9cebc21.jpg" alt />
+                </van-col>
+                <van-col :span="24">
+                  <p class="van-ellipsis">1111</p>
+                  <p class="van-ellipsis">1111</p>
+                </van-col>
+              </van-row>
+            </van-col>
+            <van-col :span="11" class="bumen-item" >
+              <van-row>
+                <van-col :span="24">
+                  <img src="http://171.111.153.241:8095//resources/2019/03/28/26925f80e13a680003ce4d80f9cebc21.jpg" alt />
+                </van-col>
+                <van-col :span="24">
+                  <p class="van-ellipsis">1111</p>
+                  <p class="van-ellipsis">1111</p>
+                </van-col>
+              </van-row>
+            </van-col>
+            <van-col :span="11" class="bumen-item" >
+              <van-row>
+                <van-col :span="24">
+                  <img src="http://171.111.153.241:8095//resources/2019/03/28/26925f80e13a680003ce4d80f9cebc21.jpg" alt />
+                </van-col>
+                <van-col :span="24">
+                  <p class="van-ellipsis">1111</p>
+                  <p class="van-ellipsis">1111</p>
+                </van-col>
+              </van-row>
+            </van-col> -->
+
+            <van-col :span="11" class="bumen-item" v-for="item in listnewsFire" :key="item.id" >
+              <van-row>
+                <van-col :span="24">
+                  <img :src="item.image" alt />
+                </van-col>
+                <van-col :span="24">
+                  <p class="van-ellipsis">{{item.title}}</p>
+                  <p class="van-ellipsis">{{item.subTitle}}</p>
+                </van-col>
+              </van-row>
+            </van-col>
+
+            
+            
+            <!-- <van-col
+              v-for="item in listnewsFire"
+              :key="item.id"
+              class="tzgg-images-item"
+              :span="11"
+              :md="8"
+              style="margin-top:20px;margin-left:9px;margin-right:6px;background:rgba(255,255,255,1);padding:11px;"
+              @click="toDetailPage(item.id,item.siteId)"
+            >
+              <img :src="item.image" />
+              <van-row class="tzgg-images-item-content">
+                <h4
+                  class="tzgg-images-item-content-title van-ellipsis"
+                  style="font-size:18px"
+                >{{item.title}}</h4>
+                <p
+                  class="tzgg-images-item-content-introduction van-multi-ellipsis--l2"
+                  style="font-size:12px"
+                >{{item.subTitle}}</p>
+              </van-row>
+            </van-col>-->
           </van-col>
         </van-row>
       </el-row>
@@ -446,28 +528,28 @@
 </template>
 
 <script>
-import { formatDate } from '@/common/date.js'; // 在组件中引用date.js
-import Vue from 'vue'
-import { serverip as ip } from '@/utils/serverIP'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/css/swiper.min.css'
-Vue.use(VueAwesomeSwiper)
+import { formatDate } from "@/common/date.js"; // 在组件中引用date.js
+import Vue from "vue";
+import { serverip as ip } from "@/utils/serverIP";
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import "swiper/css/swiper.min.css";
+Vue.use(VueAwesomeSwiper);
 export default {
   data() {
     return {
-		srt:'',
-		list:[],
-		lanse:[],
-		listnews:[],
-		listnewsSec:[],
-		listnewsThr:[],
-		listnewsFour:[],
-		listnewsFire:[],
-		listnewsSix:[],
-      activeName: 'first',
+      srt: "",
+      list: [],
+      lanse: [],
+      listnews: [],
+      listnewsSec: [],
+      listnewsThr: [],
+      listnewsFour: [],
+      listnewsFire: [],
+      listnewsSix: [],
+      activeName: "first",
       swiperOption: {
         pagination: {
-          el: '.swiper-pagination',
+          el: ".swiper-pagination",
           clickable: true
         },
         loop: true,
@@ -476,103 +558,113 @@ export default {
           delay: 30000
         }
       }
-    }
+    };
   },
   filters: {
-     // 时间格式自定义 只需把字符串里面的改成自己所需的格式
-     formatDate(time) {
-       let date = new Date(time);
-       return formatDate(date, 'yyyy/MM/dd');
-     }
-   },
-  mounted(){
-  	this.getLanmu()
+    // 时间格式自定义 只需把字符串里面的改成自己所需的格式
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, "yyyy/MM/dd");
+    }
   },
-  methods:{
-	  moreNewsList(id,name){//栏目详情列表
-	  		this.$router.push({
-	  		          path:'/common/commonlistSeven',
-	  		          query: {
-	  		            id: id,
-	  					title:name
-	  		          }
-	  		        })  
-	  },
-	  toDetailPage(id,siteId){//跳转至详情页
-	  		this.$router.push({
-	  		          path:'/secondaryHome/details',
-	  		          query: {
-	  		            id: id,
-						siteId:siteId
-	  		          }
-	  		        })
-	  },
-  	getLanmu(){//获取栏目列表
-  				  		  this.axios.post(ip+'/unauth/column/selectList',
-  				  			{siteId:this.$route.query.id}
-  				  		  ).then((res)=>{
-  				  			  this.list=res.data.data
-							  this.getLanse()
-  				  			   // console.log(res)
-  				  		  })
-  	},
-	getLanse(){ //获取内页栏目
-		this.axios.post(ip+'/unauth/column/selectChild',
-		{id:this.list[0].id}
-  				  		  ).then((res)=>{
-							  console.log(res)
-  				  			   this.lanse=res.data.data
-							   console.log('蓝色:',this.lanse)
-							   this.getList()
-							   this.getListSec()
-							   this.getListThr()
-							   this.getListFour()
-							   this.getListFire()
-  				  			   
-  				  		  })
-	},
-	getList(){ //获取单页列表0
-		this.axios.post(ip+'/unauth/news/selectList',
-		{columnId:this.lanse[0].id}
-				  		  ).then((res)=>{
-							  this.listnews = res.data.data.data
-							  console.log('第0条',this.listnews)
-		 })
-	},
-	getListSec(){ //获取单页列表1
-		this.axios.post(ip+'/unauth/news/selectList',
-		{columnId:this.lanse[1].id}
-				  		  ).then((res)=>{
-							  this.listnewsSec = res.data.data.data
-							  console.log('第一条',this.listnewsSec)
-		 })
-	},
-	getListThr(){ //获取单页列表2
-		this.axios.post(ip+'/unauth/news/selectList',
-		{columnId:this.lanse[2].id}
-				  		  ).then((res)=>{
-							  this.listnewsThr = res.data.data.data
-							  console.log('第二条',this.listnewsThr)
-		 })
-	},
-	getListFour(){ //获取单页列表3
-		this.axios.post(ip+'/unauth/news/selectList',
-		{columnId:this.lanse[3].id}
-				  		  ).then((res)=>{
-							  this.listnewsFour = res.data.data.data
-							  console.log('第三条',this.listnewsFour)
-		 })
-	},
-	getListFire(){ //获取单页列表4
-		this.axios.post(ip+'/unauth/news/selectList',
-		{columnId:this.lanse[4].id}
-				  		  ).then((res)=>{
-							  this.listnewsFire = res.data.data.data
-							  console.log('第四条',this.listnewsFire)
-		 })
-	},
+  mounted() {
+    this.getLanmu();
+  },
+  methods: {
+    moreNewsList(id, name) {
+      //栏目详情列表
+      this.$router.push({
+        path: "/common/commonlist2",
+        query: {
+          id: id,
+          title: name
+        }
+      });
+    },
+    toDetailPage(id, siteId) {
+      //跳转至详情页
+      this.$router.push({
+        path: "/secondaryHome/details",
+        query: {
+          id: id,
+          siteId: siteId
+        }
+      });
+    },
+    getLanmu() {
+      //获取栏目列表
+      this.axios
+        .post(ip + "/unauth/column/selectList", {
+          siteId: this.$route.query.id
+        })
+        .then(res => {
+          this.list = res.data.data;
+          this.getLanse();
+          // console.log(res)
+        });
+    },
+    getLanse() {
+      //获取内页栏目
+      this.axios
+        .post(ip + "/unauth/column/selectChild", { id: this.list[0].id })
+        .then(res => {
+          console.log(res);
+          this.lanse = res.data.data;
+          console.log("这是标题", this.lanse);
+          this.getList();
+          this.getListSec();
+          this.getListThr();
+          this.getListFour();
+          this.getListFire();
+        });
+    },
+    getList() {
+      //获取单页列表0
+      this.axios
+        .post(ip + "/unauth/news/selectList", { columnId: this.lanse[0].id })
+        .then(res => {
+          this.listnews = res.data.data.data;
+          console.log("第0条", this.listnews);
+        });
+    },
+    getListSec() {
+      //获取单页列表1
+      this.axios
+        .post(ip + "/unauth/news/selectList", { columnId: this.lanse[1].id })
+        .then(res => {
+          this.listnewsSec = res.data.data.data;
+          console.log("第一条", this.listnewsSec);
+        });
+    },
+    getListThr() {
+      //获取单页列表2
+      this.axios
+        .post(ip + "/unauth/news/selectList", { columnId: this.lanse[2].id })
+        .then(res => {
+          this.listnewsThr = res.data.data.data;
+          console.log("第二条", this.listnewsThr);
+        });
+    },
+    getListFour() {
+      //获取单页列表3
+      this.axios
+        .post(ip + "/unauth/news/selectList", { columnId: this.lanse[3].id })
+        .then(res => {
+          this.listnewsFour = res.data.data.data;
+          console.log("第三条", this.listnewsFour);
+        });
+    },
+    getListFire() {
+      //获取单页列表4
+      this.axios
+        .post(ip + "/unauth/news/selectList", { columnId: this.lanse[4].id })
+        .then(res => {
+          this.listnewsFire = res.data.data.data;
+          console.log("第四条", this.listnewsFire);
+        });
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -697,6 +789,28 @@ p {
     }
   }
 }
+.bumen {
+  background: rgba(183, 218, 253, 1);
+  height: 100%;
+  // display: flex;
+
+ .bumen-item {
+   background-color: rgba($color: #ffffff, $alpha: 1.0);
+   margin-top:10px;
+   margin-left:10px ;
+   padding-left: 5px;
+   
+   img {
+     padding: 5px;
+   }
+   p {
+     margin-top: 0;
+     margin-bottom: 0;
+     padding: 5px;
+   }
+ }
+
+}
 img {
   width: 100%;
   height: 100%;
@@ -818,7 +932,7 @@ img {
     padding-top: 0;
     padding-bottom: 0;
 
-    min-height: 32rem;
+    min-height: 30.1rem;
     // background-color: #c4ddfb;
     //通知公告
     .gzgg {

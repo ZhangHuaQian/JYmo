@@ -87,16 +87,23 @@
       </van-grid> -->
       <!-- 导航栏结束 -->
 
-      <van-grid :column-num="3">
+      <van-grid :column-num="3" >
         <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
-        <van-grid-item icon="photo-o"  @click="toNavigation(list[1].id,list[1].name)" text="学校概况" />
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[1].id,name:list[1].name}}" text="学校概况" />
         <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url)" text="机构设置" />
-        <van-grid-item icon="photo-o" @click="toNewPages(list[3].id,list[3].url)" text="学科专业" />
-        <van-grid-item icon="photo-o" @click="toNavigation(list[4].id,list[4].name)" text="学术研究" />
+        <van-grid-item icon="photo-o"  @click="toNewPages(list[3].id,list[3].url)" text="学科专业" />
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[4].id,name:list[4].name}}" text="学术研究" />
         <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url)" text="招生就业" />
-        <van-grid-item icon="photo-o" @click="toNavigation(list[6].id,list[6].name)" text="队伍建设" />
-        <van-grid-item icon="photo-o" @click="toNavigation(list[7].id,list[7].name)" text="公共服务" />
-        <van-grid-item icon="photo-o" @click="toNavigation(list[8].id,list[8].name)" text="校园文化" />
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" />
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" /> 
+        <!-- @click="toNavigation(list[8].id,list[8].name)" 
+        @click="toNavigation(list[7].id,list[7].name)"
+        @click="toNavigation(list[6].id,list[6].name)"
+        @click="toNavigation(list[4].id,list[4].name)"
+        @click="toNavigation(list[1].id,list[1].name)"
+
+        -->
       </van-grid>
       <!-- <van-grid :column-num="3" v-if="$route.meta.navBG">
         <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
@@ -145,6 +152,7 @@ export default {
           name: name
         }
       });
+      this.getList();
     },
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
@@ -184,7 +192,7 @@ export default {
     },
     toNewPagesListSeven(id) {
       this.$router.push({
-        path: "/common/commonlistSeven",
+        path: "/common/commonlist2",
         query: {
           id: id
         }

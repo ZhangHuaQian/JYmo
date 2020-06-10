@@ -182,6 +182,7 @@ export default {
       relateList: []
     };
   },
+  
   mounted() {
     this.getDetail();
     this.getHotNews();
@@ -236,6 +237,7 @@ export default {
     },
 
     getDetail() {
+      console.log(this.$route.query.id,this.$route.query.siteId,'zeshihjhhh')
       //
       this.axios
         .post(ip + "/unauth/news/select", {
@@ -251,7 +253,7 @@ export default {
     getRelateList() {
       //获取相关资讯
       this.relateList = this.list.relateList;
-      console.log("相关资讯", this.relateList);
+      console.log(this.list,"相关资讯数据", this.relateList);
     },
     getHotNews() {
       this.axios

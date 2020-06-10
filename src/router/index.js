@@ -50,7 +50,7 @@ const routes = [{
     path: '/Navigation/index',
     component: () =>
       import ('@/views/Navigation'),
-    meta: { title: '导航', }
+    meta: { title: '导航',navBG: navBG ,banner: topSecondaryHome,}
   }]
 },
 // 榜样力量
@@ -124,14 +124,14 @@ const routes = [{
 	    name: 'commonList1',
 	    path: '/common/commonlist1',
 	    component: () =>
-	      import ('@/views/common/commonlistSeven'),
+	      import ('@/views/common/commonlist2'),
 	    meta: { title: '通用列表页', banner: topSecondaryHome, navBG: navBG }
 	},
 	{
 	    name: 'commonList2',
 	    path: '/common/commonlist2',
 	    component: () =>
-	      import ('@/views/common/commonlistSeven'),
+	      import ('@/views/common/commonlist2'),
 	    meta: { title: '通用列表页', banner: topSecondaryHome, navBG: navBG }
 	},
     {
@@ -177,10 +177,10 @@ const routes = [{
       meta: { title: '通用列表(部门动态)', banner: topSecondaryHome, navBG: navBG }
     },
     {
-      name: 'commonlistSeven',
-      path: '/common/commonlistSeven',
+      name: 'commonlist2',
+      path: '/common/commonlist2',
       component: () =>
-        import ('@/views/common/commonlistSeven'),
+        import ('@/views/common/commonlist2'),
       meta: { title: '通用列表(规则制度)', banner: topSecondaryHome, navBG: navBG }
     },
     {
@@ -240,14 +240,14 @@ const routes = [{
 },
 
 {
-  path: '/rAcademy',
+  path: '/college',
   component: Layout,
-  redirect: '/rAcademy/index',
+  redirect: '/collegeHome',
   children: [{
-    name: 'rAcademy',
-    path: '/rAcademy/index',
+    name: 'collegeHome',
+    path: '/collegeHome',
     component: () =>
-      import ('@/views/rAcademy'),
+      import ('@/views/collegeHome'),
     meta: { title: '学院首页', banner: topSecondaryHome, navBG: navBG, departmentName: '侦查学院' }
   }]
 },

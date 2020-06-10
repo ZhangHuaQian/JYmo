@@ -229,7 +229,7 @@ export default {
   methods: {
 	  moreNewsList(id,name){//栏目详情列表
 	  		this.$router.push({
-	  		          path:'/common/commonlistSeven',
+	  		          path:'/common/commonlist2',
 	  		          query: {
 	  		            id: id,
 	  					title:name
