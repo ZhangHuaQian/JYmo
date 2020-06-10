@@ -1,0 +1,12 @@
+
+		pc端			移动端
+
+部门首页 ：	/departmentHome		 /departmentHome
+部门概括：  	/common/commonlist2            /  
+规章制度：	/common/commonlist2	/common/commonlistSeven
+工作职责：	/common/commonlist2	/	
+
+课程建设：	/common/commonlist2   	/
+教学科研：	/common/commonlist2	/
+师资队伍：	/common/commonlist2	/
+学院概况：	/common/commonlist2	/
