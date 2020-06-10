@@ -12,7 +12,7 @@
       <van-search v-if="!$route.meta.navBG" v-model="seach" shape="round" placeholder="请输入搜索关键词" />
       <div style="clear: both;"></div>
 
-      <van-grid :column-num="3">
+      <!-- <van-grid :column-num="3">
         <van-grid-item @click="toNewPagesIndex(list[0].id)" v-if="!$route.meta.navBG" icon="wap-home-o"  :text="list[0].name"/>
         <van-grid-item @click="toNavigation(list[1].id,list[1].name)" v-if="!$route.meta.navBG" icon="photo-o"  :text="list[1].name" />
         <van-grid-item
@@ -79,13 +79,36 @@
         />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to text="警院影像" />
         <van-grid-item v-if="$route.meta.navBG" icon="photo-o" to="/home/index" text="学校首页" />
-      </van-grid>
+      </van-grid> -->
       
       <!-- 导航栏开始 -->
       <!-- <van-grid :column-num="3">
         <van-grid-item v-for="item in list" :key="item.id" icon="photo-o" :to="{path:item.url,query:{id:item.id}}" :text="item.name" />
       </van-grid> -->
       <!-- 导航栏结束 -->
+
+      <van-grid :column-num="3">
+        <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
+        <van-grid-item icon="photo-o"  @click="toNavigation(list[1].id,list[1].name)" text="学校概况" />
+        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url)" text="机构设置" />
+        <van-grid-item icon="photo-o" @click="toNewPages(list[3].id,list[3].url)" text="学科专业" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[4].id,list[4].name)" text="学术研究" />
+        <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url)" text="招生就业" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[6].id,list[6].name)" text="队伍建设" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[7].id,list[7].name)" text="公共服务" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[8].id,list[8].name)" text="校园文化" />
+      </van-grid>
+      <!-- <van-grid :column-num="3" v-if="$route.meta.navBG">
+        <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
+        <van-grid-item icon="photo-o"  @click="toNavigation(list[1].id,list[1].name)" text="学校概况" />
+        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url)" text="机构设置" />
+        <van-grid-item icon="photo-o" @click="toNewPages(list[3].id,list[3].url)" text="学科专业" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[4].id,list[4].name)" text="学术研究" />
+        <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url)" text="招生就业" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[6].id,list[6].name)" text="队伍建设" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[7].id,list[7].name)" text="公共服务" />
+        <van-grid-item icon="photo-o" @click="toNavigation(list[8].id,list[8].name)" text="校园文化" />
+      </van-grid> -->
 
       <van-nav-bar :title="name" to="this.$router.go(-1)" left-arrow v-if="name == ''" />
     </van-row>

@@ -50,7 +50,7 @@ const routes = [{
     path: '/Navigation/index',
     component: () =>
       import ('@/views/Navigation'),
-    meta: { title: '导航', bannerZhuanti: topSpecialHome }
+    meta: { title: '导航', }
   }]
 },
 // 榜样力量
