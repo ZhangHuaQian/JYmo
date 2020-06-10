@@ -1,5 +1,6 @@
 <template>
   <div class="home-container">
+	  <van-col span="24" class="title">{{$route.query.name}}</van-col>
 <!--    <el-row class="current">
     </el-row> -->
     <el-row class="list">
@@ -74,7 +75,8 @@ export default {
 	    data() {
 	      return {
 			  list:[],
-	        activeName: 'first'
+			activeName: 'first',
+			name: ""
 	      }
 	    },
   mounted() {

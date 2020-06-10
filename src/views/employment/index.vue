@@ -1,5 +1,7 @@
 <template>
+
   <div class="home-container">
+    <van-col span="24" class="title">{{name}}</van-col>
     <van-row class="news-list">
       <van-col class="first-news" :span="24"  @click="toNewPages(news[0].id,news[0].siteId)">
         <van-row style="font-size: 0;" :span="24">
@@ -212,7 +214,8 @@ export default {
 		news:[],
 		zhaosheng:[],
 		fudao:[],
-		Jiuye:[],
+    Jiuye:[],
+    name:$route.query.name
 	}
   },
   filters: {

@@ -6,9 +6,12 @@
       <NavMenu v-if="$route.path.indexOf('/secondaryHome')>-1" class="NavMenu" />
       <!-- <NavMenu v-if="$route.path.indexOf('/departmentHome')>-1" class="NavMenu" /> -->
        <NavMenuZhuanti v-if="$route.path.indexOf('/departmentHome')>-1" /> 
+       <NavMenuZhuanti v-if="$route.path.indexOf('/common/commonlist2')>-1" /> 
+       <NavMenuZhuanti v-if="$route.path.indexOf('/college')>-1" /> 
+       
       <NavMenu v-if="$route.path.indexOf('/organizationSetup')>-1" class="NavMenu" />
-      <NavMenu v-if="$route.path.indexOf('/common')>-1" class="NavMenu" />
-      <NavMenu v-if="$route.path.indexOf('/college')>-1" class="NavMenu" />
+      <!-- <NavMenu v-if="$route.path.indexOf('/common/commonlist2?id=38')>-1" class="NavMenu" /> -->
+      <!-- <NavMenu v-if="$route.path.indexOf('/college')>-1" class="NavMenu" /> -->
       <NavMenu v-if="$route.path.indexOf('/Navigation')>-1" class="NavMenu" />
     </el-row>
     <router-view />

@@ -37,7 +37,7 @@
               </div>
             </el-tab-pane>
           </el-tabs>
-        </el-row>-->
+        </el-row> -->
 
         <van-row :gutter="20" class="box1">
           <van-col>
@@ -55,6 +55,7 @@
                     style="position: absolute;right: 1.0%;z-index: 3;"
                     @click="moreNews(listsec[0].id)"
                   >更多></a>
+                  
                 </van-col>
               </van-row>
               <van-row class="wrapper">
@@ -79,7 +80,7 @@
                         >
                         
                         {{  getMoment(list[0].modifyTime, 'YYYY-MM-DD') }}
-                        <!-- {{ list[0].modifyTime | formatDate }} -->
+                        
                         </van-col>
                       </van-row>
                     </van-col>
@@ -102,7 +103,7 @@
                       <p class="van-ellipsis">{{item.title}}</p>
                     </van-col>
                     <van-col :span="6" :offset="1" style="font-size:12px">
-                      <!-- <p>[{{ item.modifyTime | formatDate }}]</p> -->
+                      
                       <p>[{{  getMoment(item.modifyTime, 'YYYY-MM-DD') }}]</p>
                     </van-col>
                   </van-row>
@@ -111,6 +112,81 @@
             </van-row>
           </van-col>
         </van-row>
+
+         <!-- <van-row :gutter="20" class="box1">
+          <van-col>
+            <van-row style="line-height: 2rem;position: relative;" class="tit">
+              <van-row style="border-bottom: 2px solid rgba(67,136,207,1);">
+                <van-col :span="8" class="tit_tit">
+                  <span style="margin-left:20px">校园新闻</span>
+                </van-col>
+                <van-col
+                  :span="12"
+                  style="text-align: right;color:rgba(153,153,153,1);"
+                  class="tit_rig"
+                >
+                  <a
+                    style="position: absolute;right: 1.0%;z-index: 3;"
+                    @click="moreNews(listsec[0].id)"
+                  >更多></a>
+                  
+                </van-col>
+              </van-row>
+              <van-row class="wrapper">
+                <div class="list" @click="toDetailPage(list[0].id,list[0].siteId)">
+                  <van-col class="wrapper-item" :span="24">
+                    <van-col :span="10">
+                      <img :src="list[0].image" />
+                    </van-col>
+
+                    <van-col style="display:block" :span="14">
+                      <p
+                        style="margin-top:-2%;margin-left:3%;font-size:18px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;"
+                      >{{list[0].title}}</p>
+                      <p
+                        class="van-multi-ellipsis--l2"
+                        style="margin-top:-8%;margin-left:3%;font-size:14px;line-height: 1.5em"
+                      >{{list[0].subTitle}}</p>
+                      <van-row type="flex" justify="end">
+                        <van-col
+                          span="8"
+                          style="font-size:12px;margin-right:20px"
+                        >
+                        
+                        {{  getMoment(list[0].modifyTime, 'YYYY-MM-DD') }}
+                        
+                        </van-col>
+                      </van-row>
+                    </van-col>
+                  </van-col>
+                  <van-col :span="24">
+                    <van-divider dashed />
+                  </van-col>
+
+                  <van-row
+                    v-for="(item,index) in list"
+                    :key="index"
+                    class="list-item"
+                    v-if="index>0"
+                    @click="toDetailPage(item.id,item.siteId)"
+                  >
+                    <van-col :span="1" style="margin-top:10px">
+                      <i class="list-item-point">·</i>
+                    </van-col>
+                    <van-col :span="16">
+                      <p class="van-ellipsis">{{item.title}}</p>
+                    </van-col>
+                    <van-col :span="6" :offset="1" style="font-size:12px">
+                      
+                      <p>[{{  getMoment(item.modifyTime, 'YYYY-MM-DD') }}]</p>
+                    </van-col>
+                  </van-row>
+                </div>
+              </van-row>
+            </van-row>
+          </van-col>
+        </van-row> -->
+        <!-- <p>[{{ item.modifyTime | formatDate }}]</p> -->
 
         <!-- 通知公告 -->
         <van-row :gutter="20">
@@ -609,7 +685,8 @@ export default {
       //新闻0
       this.axios
         .post(ip + "/unauth/news/selectList", {
-          columnId: this.listsec[0].id
+          // columnId: this.listsec[0].id
+          columnId: 72
         })
         .then(res => {
           console.log("单页面内容:3", res);

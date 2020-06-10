@@ -182,7 +182,9 @@ export default {
       relateList: []
     };
   },
-  
+  created(){
+    this.getDetail()
+  },
   mounted() {
     this.getDetail();
     this.getHotNews();

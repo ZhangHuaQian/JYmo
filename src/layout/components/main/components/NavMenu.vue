@@ -90,8 +90,8 @@
       <van-grid :column-num="3" >
         <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[1].id,name:list[1].name}}" text="学校概况" />
-        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url)" text="机构设置" />
-        <van-grid-item icon="photo-o"  @click="toNewPages(list[3].id,list[3].url)" text="学科专业" />
+        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url,list[2].name)" text="机构设置" />
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[3].id,name:list[3].name}}" text="学科专业" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[4].id,name:list[4].name}}" text="学术研究" />
         <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url)" text="招生就业" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" />
@@ -173,12 +173,14 @@ export default {
       //页面跳转传参
       this.pageId = a;
     },
-    toNewPages(id, url) {
+    toNewPages(id, url,name) {
       this.$router.push({
         path: url,
         query: {
-          id: id
-        }
+          id: id,
+          name:name
+        },
+        
       });
     },
     toNewPagess(id, url) {

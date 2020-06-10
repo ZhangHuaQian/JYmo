@@ -192,8 +192,8 @@ const routes = [{
     },
 
     {
-      name: 'details',
-      path: '/common/details',
+      name: 'details2',
+      path: '/common/details2',
       component: () =>
         import ('@/views/common/details'),
       meta: { title: '通用列表页2详情', banner: topSecondaryHome, navBG: navBG }
