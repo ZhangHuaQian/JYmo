@@ -1,0 +1,128 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "153740",
+      "name": "影像摄影",
+      "font_class": "yingxiangsheying",
+      "unicode": "e70f",
+      "unicode_decimal": 59151
+    },
+    {
+      "icon_id": "706853",
+      "name": "客服",
+      "font_class": "kefu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "751281",
+      "name": "刷子",
+      "font_class": "icon-copy",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1115097",
+      "name": "资讯",
+      "font_class": "zixun",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "1177750",
+      "name": "新闻",
+      "font_class": "xinwen",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "1237266",
+      "name": "规章制度",
+      "font_class": "guizhangzhidu",
+      "unicode": "e657",
+      "unicode_decimal": 58967
+    },
+    {
+      "icon_id": "1288665",
+      "name": "机构",
+      "font_class": "jigou",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "2150786",
+      "name": "身份证",
+      "font_class": "credentials_icon",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "4237380",
+      "name": "队伍",
+      "font_class": "duiwu",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "5127363",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e7a2",
+      "unicode_decimal": 59298
+    },
+    {
+      "icon_id": "5985631",
+      "name": "新闻资讯",
+      "font_class": "xinwenzixun",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "6241674",
+      "name": "实验管理",
+      "font_class": "shiyanguanli",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "6259629",
+      "name": "政治",
+      "font_class": "zhengzhi",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "6350091",
+      "name": "招生",
+      "font_class": "zhaosheng",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "8361849",
+      "name": "学士帽",
+      "font_class": "xueshimao",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "8574236",
+      "name": "课程",
+      "font_class": "kecheng",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "12319725",
+      "name": "科学研究和技术服务业 ",
+      "font_class": "kexue",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    }
+  ]
+}

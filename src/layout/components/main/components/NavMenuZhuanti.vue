@@ -25,7 +25,10 @@
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" />  -->
         
-        <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" />
+        <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" >
+          <van-icon class="iconfont" class-prefix='icon' size="40px" name="kecheng" />
+          <van-col style="font-size:8px;margin-top:5px">{{item.name}}</van-col>
+        </van-grid-item>
         
         <!-- <van-grid-item  v-if="item.name!=='部门概况'&&item.name!=='工作职责'&&item.name!=='规章制度'" icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" />
         <van-grid-item v-if="list[1].name ==='部门概况'" icon="photo-o"  :to="{path:'/common/commonlist2?'}" text="部门概况" /> -->

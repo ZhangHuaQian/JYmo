@@ -88,16 +88,44 @@
       <!-- 导航栏结束 -->
 
       <van-grid :column-num="3" >
-        <van-grid-item icon="photo-o"  :to="{path:'/home/index',query:{id:1}}" text="首页" />
-        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[1].id,name:list[1].name}}" text="学校概况" />
-        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url,list[2].name)" text="机构设置" />
-        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[3].id,name:list[3].name}}" text="学科专业" />
-        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[4].id,name:list[4].name}}" text="学术研究" />
+        
+        <van-grid-item icon="home" class="iconfont" class-prefix='icon'  :to="{path:'/home/index',query:{id:1}}" text="首页" >
+          <van-icon class="iconfont" class-prefix='icon' size="40px" name="home" />
+          <van-col style="font-size:8px;margin-top:5px">首页</van-col>
+        </van-grid-item> 
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[1].id,name:list[1].name}}" text="学校概况" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="xinwen" />
+          <van-col style="font-size:8px;margin-top:5px">学校概况</van-col>
+        </van-grid-item>
+        <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url,list[2].name)" text="机构设置" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="jigou" />
+          <van-col style="font-size:8px;margin-top:5px">机构设置</van-col>
+        </van-grid-item>
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[3].id,name:list[3].name}}" text="学科专业" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="kexue" />
+          <van-col style="font-size:8px;margin-top:5px">学科专业</van-col>
+        </van-grid-item>
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[4].id,name:list[4].name}}" text="学术研究" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="xueshimao" />
+          <van-col style="font-size:8px;margin-top:5px">学术研究</van-col>
+        </van-grid-item>
         <!-- <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url,list[5].name)" text="招生就业" /> -->
-         <van-grid-item icon="photo-o" :to="{path:'/employment/index',query:{columnId:list[5].id,columnName:list[5].name,name:list[5].name}}" text="招生就业" />
-        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" />
-        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
-        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" /> 
+         <van-grid-item icon="photo-o" :to="{path:'/employment/index',query:{columnId:list[5].id,columnName:list[5].name,name:list[5].name}}" text="招生就业" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="zhaosheng" />
+          <van-col style="font-size:8px;margin-top:5px">招生就业</van-col>
+         </van-grid-item>
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="duiwu" />
+          <van-col style="font-size:8px;margin-top:5px">队伍建设</van-col>
+        </van-grid-item>
+        <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="kefu" />
+          <van-col style="font-size:8px;margin-top:5px">公共服务</van-col>
+        </van-grid-item>
+        <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" >
+           <van-icon class="iconfont" class-prefix='icon' size="40px" name="icon-copy" />
+          <van-col style="font-size:8px;margin-top:5px">校园文化</van-col>
+        </van-grid-item> 
         <!-- @click="toNavigation(list[8].id,list[8].name)" 
         @click="toNavigation(list[7].id,list[7].name)"
         @click="toNavigation(list[6].id,list[6].name)"

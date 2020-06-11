@@ -20,13 +20,14 @@ import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import '@/styles/index.scss' // global css
 import 'babel-polyfill'
 
-import '@/styles/iconfont.css'
-import '@/styles/iconfont.eot'
-import '@/styles/iconfont.js'
-import '@/styles/iconfont.ttf'
-import '@/styles/iconfont.woff'
-import '@/styles/iconfont.woff2'
-import '@/styles/iconfont.svg'
+// import '@/styles/iconfont.css'
+// import '@/styles/iconfont.eot'
+// import '@/styles/iconfont.js'
+// import '@/styles/iconfont.ttf'
+// import '@/styles/iconfont.woff'
+// import '@/styles/iconfont.woff2'
+// import '@/styles/iconfont.svg'
+import '@/assets/font_isw982vo4qg/iconfont.css'
 Vue.config.productionTip = false
 
 new Vue({
