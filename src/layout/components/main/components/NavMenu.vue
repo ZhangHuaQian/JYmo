@@ -88,7 +88,7 @@
       <!-- 导航栏结束 -->
 
       <van-grid :column-num="3" >
-        <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
+        <van-grid-item icon="photo-o"  :to="{path:'/home/index',query:{id:1}}" text="首页" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[1].id,name:list[1].name}}" text="学校概况" />
         <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url,list[2].name)" text="机构设置" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[3].id,name:list[3].name}}" text="学科专业" />

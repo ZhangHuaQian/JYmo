@@ -182,8 +182,8 @@ export default {
       relateList: []
     };
   },
-  created(){
-    this.getDetail()
+  created() {
+    this.getDetail();
   },
   mounted() {
     this.getDetail();
@@ -212,6 +212,7 @@ export default {
     ImgSize() {
       // if(document.querySelectorAll("img").length-4>1){
       //   document.querySelectorAll("img")[1].style.width="90vw"
+      //   document.querySelectorAll("img")[j].style.textAlign = 'center'
       //   console.log(document.querySelectorAll("img"),"12323")
       // }
       // if(document.querySelectorAll("img").length-4>2){
@@ -227,19 +228,19 @@ export default {
       // }
       for (let i = 1; i < 10; i++) {
         if (document.querySelectorAll("img").length - 4 > i) {
-          for (let j = 1; j < i+1; j++) {
+          for (let j = 1; j <= i + 2; j++) {
+            console.log("触发了");
             document.querySelectorAll("img")[j].style.width = "90vw";
-            document.querySelectorAll("img")[j].style.marginLeft = "-1%";
+            // document.querySelectorAll("img")[j].style.marginLeft = "-10%";
+            document.querySelectorAll("img")[j].style.textAlign = 'center'
             console.log(document.querySelectorAll("img"), "12323");
           }
-         
         }
       }
-     
     },
 
     getDetail() {
-      console.log(this.$route.query.id,this.$route.query.siteId,'zeshihjhhh')
+      console.log(this.$route.query.id, this.$route.query.siteId, "zeshihjhhh");
       //
       this.axios
         .post(ip + "/unauth/news/select", {
@@ -255,7 +256,7 @@ export default {
     getRelateList() {
       //获取相关资讯
       this.relateList = this.list.relateList;
-      console.log(this.list,"相关资讯数据", this.relateList);
+      console.log(this.list, "相关资讯数据", this.relateList);
     },
     getHotNews() {
       this.axios
