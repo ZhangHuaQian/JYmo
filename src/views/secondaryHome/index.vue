@@ -1,48 +1,48 @@
 <template>
   <div class="home-container">
     <van-row class="news-list" :gutter="24">
-      <van-col class="first-news" :span="24">
+      <van-col class="first-news" :span="24" @click="toDetailPage(list[0].id,list[0].siteId)">
         <van-row style="font-size: 0;">
-          <img src="../../assets/secondaryHome/xwt1.png">
+          <img :src="list[0].image">
         </van-row>
         <van-row class="first-news-title">
           <p
             class="van-ellipsis"
             style="font-weight:800;font-size:24px"
-          >自治区教育厅办公室关于印发唐咸仅同志在全区教育系统新冠肺炎...</p>
+          >{{list[0].title}}</p>
 
         </van-row>
       </van-col>
       <van-col class="others-news" :md="8" :span="24">
         <van-divider style="margin:0" />
-        <van-row v-for="item in 4" :key="item">
-          <van-row class="others-news-item">
-            <router-link to="/Details" tag="a">
+        <van-row v-for="(item,index) in list" :key="index" v-if="index>0">
+          <van-row class="others-news-item" @click="toDetailPage(item.id,item.siteId)">
+            
               <van-col :span="16">
                 <p
                   class="van-ellipsis"
                   style="font-size:18px;font-weight:600"
-                >学校召开加强新型冠状病毒肺炎疫情防控工作暨新学期工作布置网络会议</p>
+                >{{item.title}}</p>
               </van-col>
               <van-col :span="6" style="margin-left:10px">
-                <p class="others-news-item-date">2020-02-26</p>
+                <p class="others-news-item-date">{{  getMoment(item.modifyTime, 'YYYY-MM-DD') }}</p>
               </van-col>
-            </router-link>
+           
           </van-row>
 
           <van-divider style="margin:0" />
         </van-row>
 
-        <van-row class="others-news-item">
-          <router-link to="/Morvanist" tag="p" style="text-align: right;color: #666666;">更多新闻></router-link>
+        <van-row class="others-news-item"  @click="moreNews(72)">
+          <router-link :to="{path:'/secondaryHome/moreList',query:{id:72}}" tag="p" style="text-align: right;color: #666666;">更多新闻></router-link>
         </van-row>
       </van-col>
     </van-row>
-    <van-row class="xsyj">
+    <!-- <van-row class="xsyj">
       <van-row style="border-bottom:2px solid rgba(67,136,207,1);width:100vw;margin-left:-5%">
 
         <van-col :md="12" :span="9" class="tit_tit">
-          <span style="margin-left:20px;font-size:24px">学术研究</span>
+          <span style="margin-left:20px;font-size:24px">思想政治</span>
         </van-col>
 
         <van-col
@@ -72,7 +72,7 @@
           </van-row>
         </van-col>
       </van-row>
-    </van-row>
+    </van-row> -->
     <van-row class="sszzgz">
 
       <van-row style="border-bottom:2px solid rgba(67,136,207,1);width:100vw;margin-left:-5%">
@@ -86,29 +86,31 @@
           :span="11"
           style="text-align: right;color:rgba(153,153,153,1);"
           class="tit_rig"
-        >更多></van-col>
+        >
+        <router-link :to="{path:'/secondaryHome/moreList',query:{id:73}}" tag="p" >更多></router-link>
+        </van-col>
       </van-row>
       <van-row class="sszzgz-newsList">
-        <van-row v-for="item in 3" :key="item">
+        <van-row v-for="item in sixiangzhengzhi" :key="item">
           <van-row class="sszzgz-newsList-item" :gutter="24">
             <van-col class="sszzgz-newsList-item-image" :span="10" :md="4">
-              <img src="../../assets/secondaryHome/xwt5.png">
+              <img :src="item.image">
             </van-col>
             <van-col class="sszzgz-newsList-item-content" :span="14" :md="20">
               <p
                 class="van-ellipsis"
                 style="font-size:18px;margin:0px"
-              >新时代讲习所五】学校组织参加全国高校思想政治理论课教师“周末理论大讲堂”第三讲活动</p>
+              >{{item.title}}</p>
               <p
                 class="van-multi-ellipsis--l2"
                 style="font-size:14px;margin-top:7px;margin-bottom:5px"
-              >4月26日下午，学校组织宣传部、学工处、校团委等部门主要负责人，各党总支书记和副书记，思政课教师和辅导员（学管队长、班主任）等在长湖校区教学楼视频会议室收看了“周末理论大讲堂”第三讲活动直播。</p>
+              >{{item.subTitle}}</p>
               <van-row type="flex" justify="space-between">
                 <van-col>
-                  <span style="font-size:14px">2020/02/26</span>
+                  <span style="font-size:14px">{{ getMoment(item.modifyTime, 'YYYY-MM-DD') }}</span>
                 </van-col>
                 <van-col>
-                  <span style="font-size:14px;display:flex;justify-content:flex-end">了解详情></span>
+                  <span style="font-size:14px;display:flex;justify-content:flex-end" @click="toDetailPage(item.id,item.siteId)">了解详情></span>
                 </van-col>
               </van-row>
             </van-col>
@@ -120,7 +122,7 @@
     </van-row>
     <van-row class="tzgg">
 
-      <van-row style="border-bottom:2px solid rgba(67,136,207,1);width:100vw;margin-left:-5%">
+      <!-- <van-row style="border-bottom:2px solid rgba(67,136,207,1);width:100vw;margin-left:-5%">
         <van-col :md="12" :span="9" class="tit_tit">
           <span style="margin-left:20px;font-size:24px">通知公告</span>
         </van-col>
@@ -147,7 +149,7 @@
           </van-row>
         </van-col>
 
-      </van-row>
+      </van-row> -->
     </van-row>
 
     <van-row class="jyyx">
@@ -161,18 +163,20 @@
           :md="12"
           :span="11"
           style="text-align: right;color:rgba(153,153,153,1);"
-          class="tit_rig"
-        >更多></van-col>
+          class="tit_rig">
+          <router-link :to="{path:'/secondaryHome/moreList',query:{id:74}}" tag="p" >更多></router-link>
+          
+          </van-col>
       </van-row>
       <van-row class="jyyx-images" :gutter="20" style="margin-top:20px">
-        <van-col class="jyyx-images-item" :span="12" :md="12">
-          <img src="../../assets/secondaryHome/xwt12.png">
-          <h4 class="jyyx-images-item-title">宾正迎到学校检查指导疫情防控工作</h4>
+        <van-col class="jyyx-images-item" :span="12" :md="12" v-for=" item in jingyuanyingxiang" :key="item.id"  @click="toDetailPage(item.id,item.siteId)">
+          <img :src="item.image">
+          <h4 class="jyyx-images-item-title">{{item.title}}</h4>
         </van-col>
-        <van-col class="jyyx-images-item" :span="12" :md="12">
+        <!-- <van-col class="jyyx-images-item" :span="12" :md="12">
           <img src="../../assets/secondaryHome/xwt13.png">
           <h4 class="jyyx-images-item-title">学校召开“不忘初心、牢记使命”主题教育总结大会</h4>
-        </van-col>
+        </van-col> -->
       </van-row>
     </van-row>
   </div>
@@ -180,30 +184,73 @@
 
 <script>
 import { serverip as ip } from '@/utils/serverIP'
+import moment from 'moment'
+moment.locale('zh-cn')
 export default {
   components: {},
   data() {
     return {
 		list:[],
 		lanse:[],
-		listnews:[],
-		listnewsSec:[],
-		listnewsThr:[],
-		listnewsFour:[],
-		listnewsFire:[],
+		// listnews:[],
+		// listnewsSec:[],
+		// listnewsThr:[],
+		// listnewsFour:[],
+    // listnewsFire:[],
+    
+      list: [],
+      listsec: [],
+      listFirst: [],
+      listSecond: [],
+      listThrd: [],
+      listFour: [],
+      listFive: [],
+      listSix: [],
+      zt:[],
+      tuijianxinwen: [],
+      sixiangzhengzhi: [],
+      jingyuanyingxiang: []
 	}
   },
   filters: {
      // 时间格式自定义 只需把字符串里面的改成自己所需的格式
      formatDate(time) {
        let date = new Date(time);
-       return formatDate(date, 'yyyy/MM/dd');
+       return formatDate(date, 'yyyy-MM-dd');
      }
    },
+   created() {
+    this.getTJXW()
+    this.getSXZZ()
+    this.getJYYX()
+  },
    mounted(){
-   	this.getLanmu()
+     this.getLanmu(),
+     this.getListsec();
    },
    methods:{
+      getMoment(date, str) {
+      return moment(date).format(str)
+    },
+    toDetailPage(id, siteId) {
+      //跳转至详情页
+      this.$router.push({
+        path: "/secondaryHome/details",
+        query: {
+          id: id,
+          siteId: siteId
+        }
+      });
+    },
+    moreNews(id) {
+      //更多校园新闻
+      this.$router.push({
+        path: "/secondaryHome/index",
+        query: {
+          id: id
+        }
+      });
+    },
    	getLanmu(){//获取栏目列表
    				  		  this.axios.post(ip+'/unauth/column/selectList',
    				  			{siteId:this.$route.query.id}
@@ -212,7 +259,164 @@ export default {
    				  			   console.log('获取栏目：',res)
 							    // this.getLanse()
    				  		  })
-   	},
+     },
+     getListsec() {
+      //获取首页的蓝色底色栏目
+      this.axios
+        .post(ip + "/unauth/column/selectChild", { id: 36 })
+        .then(res => {
+          console.log("蓝色栏目：1", res);
+          this.listsec = res.data.data;
+          this.getList();
+          // console.log(this.listsec)
+        });
+    },
+    
+    getList() {
+      console.log(this.listsec[0].id,'4444')
+      //新闻0
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          // columnId: this.listsec[0].id
+          columnId: 72
+        })
+        .then(res => {
+          console.log("单页面内容:3", res);
+          this.list = res.data.data.data;
+          console.log("新闻0:", this.list);
+          this.getListFirst();
+        });
+    },
+    getListFirst() {
+      //新闻1
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[1].id
+        })
+        .then(res => {
+          this.listFirst = res.data.data.data;
+          console.log("新闻1:4", this.listFirst);
+          this.getListSecond();
+        });
+    },
+    getListSecond() {
+      //新闻2
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[2].id
+        })
+        .then(res => {
+          this.listSecond = res.data.data.data;
+          console.log("新闻2:5", this.listSecond);
+          this.getListThrd();
+        });
+    },
+    getListThrd() {
+      //新闻3
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[3].id
+        })
+        .then(res => {
+          this.listThrd = res.data.data.data;
+          console.log("新闻3:6", this.listThrd);
+          this.getListFour();
+        });
+    },
+    getListFour() {
+      //新闻4
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[4].id
+        })
+        .then(res => {
+          this.listFour = res.data.data.data;
+          console.log("新闻4:7", this.listFour);
+          this.getListFive();
+        });
+    },
+    getListFive() {
+      //新闻5
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[5].id
+        })
+        .then(res => {
+          this.listFive = res.data.data.data;
+          console.log("新闻5:8", this.listFive);
+          this.getListSix();
+        });
+    },
+    getMoment(date, str) {
+      return moment(date).format(str)
+    },
+    getListSix() {
+      //新闻6
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.listsec[6].id
+        })
+        .then(res => {
+          this.listSix = res.data.data.data;
+          console.log("新闻6:9", this.listSix);
+        });
+    },
+
+    getTJXW() {
+      const data = {
+        columnId: 72,
+        pageNum: 1,
+        pageSize: 5
+      }
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          ...data
+        })
+        .then(res => {
+          this. tuijianxinwen = res.data.data.data;
+          console.log('推荐新闻',this.sixiangzhengzhi);
+        });
+      
+      // getList('news', data).then(response => {
+      //   this.sixiangzhengzhi = response.data.data.data
+      // })
+    },
+    getSXZZ() {
+      const data = {
+        columnId: 73,
+        pageNum: 1,
+        pageSize: 3
+      }
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          ...data
+        })
+        .then(res => {
+          this.sixiangzhengzhi = res.data.data.data;
+          console.log('思想政治',this.sixiangzhengzhi);
+        });
+      // getList('news', data).then(response => {
+      //   this.sixiangzhengzhi = response.data.data.data
+      // })
+    },
+    getJYYX() {
+      const data = {
+        columnId: 74,
+        pageNum: 1,
+        pageSize: 2
+      }
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          ...data
+        })
+        .then(res => {
+          this.jingyuanyingxiang = res.data.data.data;
+          console.log('警院影相',this.jingyuanyingxiang);
+        });
+      // getList('news', data).then(response => {
+      //   this.jingyuanyingxiang = response.data.data.data
+      // })
+    },
    	// getLanse(){ //获取内页栏目
    	// 	this.axios.post('/gxjcxy/unauth/column/selectChild',
    	// 	{id:this.list[0].id}

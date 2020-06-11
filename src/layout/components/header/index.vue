@@ -1,15 +1,17 @@
 <template>
   <div>
     <el-row class="top-banner">
-      <span v-if="$route.meta.departmentName" class="departmentName">{{ $route.meta.departmentName }}</span>
+      <!-- <span v-if="$route.meta.departmentName" class="departmentName">{{ $route.meta.departmentName }}</span> -->
+      <span v-if="$route.meta.banner" class="departmentName"> <p style="font-size:16px"> {{ $route.query.name||$route.query.cloumnName }} </p></span>
       <!-- 添加专题top -->
 
     </el-row>
-    <el-row v-if="$route.meta.banner" style="font-size: 0;position: relative;">
+    <!-- <el-row v-if="$route.meta.banner" style="font-size: 0;position: relative;">
       <img src="@/assets/secondaryHome/dingb.png">
-    </el-row>
+    </el-row> -->
     <el-row v-if="$route.meta.bannerZhuanti" style="font-size: 0;">
       <img src="@/assets/home/bannerZhuanti.png">
+      
     </el-row>
 
     <!-- <el-row :gutter="20" v-if="$route.path.indexOf('/zhauntiHome')>-1" class="zhauntiHome">
@@ -25,13 +27,13 @@
 		  <el-col :span="4" style="line-height: 2rem;">设为首页 | 添加收藏</el-col>
 	  </el-row> -->
 
-    <van-row v-if="$route.meta.bannerZhuanti" style="background:#4388CF" :gutter="24" type="flex" justify="space-between">
+    <van-row v-if="$route.meta.banner" style="background:#4388CF" :gutter="24" type="flex" justify="space-between">
       <van-col :span="8" style="font-size: 0;padding:10px">
         <img src="@/assets/secondaryHome/logo.png" alt="">
       </van-col>
-      <van-col :span="4" style="justify-content: center;align-items: center;display:flex;color: #ebeff5">
+      <!-- <van-col :span="4" style="justify-content: center;align-items: center;display:flex;color: #ebeff5">
         <van-icon name="search" size="30" />
-      </van-col>
+      </van-col> -->
     </van-row>
 
   </div>

@@ -93,7 +93,8 @@
         <van-grid-item icon="photo-o"  @click="toNewPages(list[2].id,list[2].url,list[2].name)" text="机构设置" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[3].id,name:list[3].name}}" text="学科专业" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[4].id,name:list[4].name}}" text="学术研究" />
-        <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url)" text="招生就业" />
+        <!-- <van-grid-item icon="photo-o" @click="toNewPages(list[5].id,list[5].url,list[5].name)" text="招生就业" /> -->
+         <van-grid-item icon="photo-o" :to="{path:'/employment/index',query:{columnId:list[5].id,columnName:list[5].name,name:list[5].name}}" text="招生就业" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" /> 
@@ -132,7 +133,8 @@ export default {
       activeIndex: "1",
       seach: "",
       name: "专题",
-      ggfw_show: false
+      ggfw_show: false,
+      name:''
     };
   },
   mounted() {
@@ -140,7 +142,13 @@ export default {
     this.toNewPage();
     this.getTitle();
   },
+  watch: {
+      '$route'(to, from) {
+        this.$router.go(0);
+      }
+    },
   methods: {
+    
     getTitle() {
       this.name = this.$route.query.name;
     },

@@ -26,4 +26,12 @@ commonlistSeven页面数据
 http://171.111.153.241:8095/unauth/news/selectList { columnId: 92  pageNum: 1 pageSize: 10}	
 
 
+图书馆路由：/departmentHome?siteId=45
+档案馆路由：/departmentHome?siteId=49
+部门首页：/departmentHome?siteId=  &columnId=  &columnName= 
+工作职责：/common/commonlist2/list2?siteId= &columnId= &columnName= &childId=
+规章制度：/common/commonlist2/list2?siteId=&columnId=&columnName=&childId=
+课程建设：/common/commonlist2/list2?siteId=&columnId=&columnName=&childId=
+教学科研：/common/commonlist2/list2?siteId=&columnId=&columnName=&childId=
+师资队伍：/common/commonlist2/list2?siteId=&columnId=&cloumnName=&childId=
 

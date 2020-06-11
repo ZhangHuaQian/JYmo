@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-	  <van-col span="24" class="title">{{$route.query.name}}</van-col>
+	  <!-- <van-col span="24" class="title"> <p> {{$route.query.name}} </p> </van-col> -->
 <!--    <el-row class="current">
     </el-row> -->
     <el-row class="list">
@@ -10,7 +10,7 @@
 			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index<17" 
 			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
 			  >
-				  <div @click="toNewpage(item.id)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  <div @click="toNewpage(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
 				  </el-col>
  <!--           <el-col v-for="(item,index) in list" :key="index" :span="6" class="list-title-01" v-if="index<17">
               <img src="@/assets/common/diwen.png">
@@ -25,7 +25,7 @@
 			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index<32 && index>16"
 			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
 			  >
-				  <div @click="toNewpages(item.id)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  <div @click="toNewpages(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
 				  </el-col>
 <!--            <el-col v-for="(item,index) in list" :key="index" :span="6" class="list-title-01" v-if="index<32 && index>16">
               <img src="@/assets/common/diwen.png">
@@ -40,7 +40,7 @@
 			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index<37 && index>31"
 			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
 			  >
-				  <div @click="toNewpage(item.id)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  <div @click="toNewpage(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
 				  </el-col>
 <!--            <el-col v-for="(item,index) in list" :key="index" :span="6" class="list-title-01" v-if="index<37 && index>31">
               <img src="@/assets/common/diwen.png">
@@ -55,7 +55,7 @@
 			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index>36"
 			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
 			  >
-				  <div @click="toNewpages(item.id)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  <div @click="toNewpages(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
 				  </el-col>
 <!--            <el-col v-for="(item,index) in list" :key="index" :span="6" class="list-title-01" v-if="index>36">
               <img src="@/assets/common/diwen.png">
@@ -93,19 +93,22 @@ export default {
 		  })
 	  },
 	  //跳转到新页面
-	  toNewpage(id){
+	  toNewpage(id,name){
 		  this.$router.push({
 		            path: '/departmentHome',
 		            query: {
-		              id: id
+					  id: id,
+					  name:name
 		            }
 		          })
 	  },
-	  toNewpages(id){
+	  toNewpages(id,name){
+		  console.log(id,name,'college')
 	  		  this.$router.push({
 	  		            path: '/college',
 	  		            query: {
-	  		              id: id
+							id: id,
+							name:name
 	  		            }
 	  		          })
 	  }

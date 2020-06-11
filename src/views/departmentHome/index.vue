@@ -407,7 +407,7 @@
           <van-col
             :md="12"
             :span="11"
-            style="text-align: right;color:rgba(153,153,153,1);"
+            style="text-align: right;color:rgba(153,153,153,1);margin-left: 72px;margin-top: 5px;"
             class="tit_rig"
             @click="moreNewsList(lanse[4].id,lanse[4].name)"
           >更多></van-col>

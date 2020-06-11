@@ -7,6 +7,7 @@
       <!-- <NavMenu v-if="$route.path.indexOf('/departmentHome')>-1" class="NavMenu" /> -->
        <NavMenuZhuanti v-if="$route.path.indexOf('/departmentHome')>-1" /> 
        <NavMenuZhuanti v-if="$route.path.indexOf('/common/commonlist2')>-1" /> 
+        <NavMenuZhuanti v-if="$route.path.indexOf('/common/details2')>-1" /> 
        <NavMenuZhuanti v-if="$route.path.indexOf('/college')>-1" /> 
        
       <NavMenu v-if="$route.path.indexOf('/organizationSetup')>-1" class="NavMenu" />

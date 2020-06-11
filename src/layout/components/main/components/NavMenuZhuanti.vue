@@ -25,8 +25,19 @@
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" />  -->
         
-        <!-- <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="`/common/commonlist2?id=100&title=规章制度`" :text="item.name" /> -->
         <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" />
+        
+        <!-- <van-grid-item  v-if="item.name!=='部门概况'&&item.name!=='工作职责'&&item.name!=='规章制度'" icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" />
+        <van-grid-item v-if="list[1].name ==='部门概况'" icon="photo-o"  :to="{path:'/common/commonlist2?'}" text="部门概况" /> -->
+        <!-- <van-grid-item v-if="list[2].name ==='工作职责'" icon="photo-o"  :to="{path:'/common/commonlist2',query:{siteId:lanse[3].siteId,columnId:lanse[3].id,columnName:lanse[3].name,childId:lanse[3].id}}" text="工作职责" /> -->
+        
+        <!-- <van-grid-item v-if="list[3].name ==='规章制度'" icon="photo-o"  :to="{path:'/common/commonlist2',query:{siteId:13,columnId:92,columnName:规章制度,childId:92}}" text="规章制度" /> -->
+        
+        
+
+        <!-- v-if="item.name！=='部门概况'"   v-if="list.name ==='部门概况'"  -->
+
+
         
 
         
@@ -49,14 +60,25 @@ export default {
       activeIndex: "1",
       seach: "",
       name: "专题",
-      ggfw_show: false
+      ggfw_show: false,
+      lanse:''
     };
+  },
+  created(){
+    this.getList();
   },
   mounted() {
     this.getList();
     this.toNewPage();
-    this.getTitle();
+    this.getTitle(),
+    this.getLanmu(),
+    this.getLanse();
   },
+  // watch: {
+  //     '$route'(to, from) {
+  //       this.$router.go(0);
+  //     }
+  //   },
   methods: {
     getTitle() {
       this.name = this.$route.query.name;
@@ -77,12 +99,36 @@ export default {
     getList() {
       this.axios
         .post(
-          ip + "/unauth/column/selectList",{siteId:this.$route.query.id}
+          ip + "/unauth/column/selectList",{siteId:this.$route.query.id||this.$route.query.siteId}
         )
         .then(res => {
           console.log(res, "导航栏");
           this.list = res.data.data;
           console.log("url列表", this.list);
+        });
+    },
+    getLanmu() {
+      //获取栏目列表
+      this.axios
+        .post(ip + "/unauth/column/selectList", {
+          siteId: this.$route.query.id
+        })
+        .then(res => {
+          this.list = res.data.data;
+          console.log(list,'4444')
+          this.getLanse();
+          // console.log(res)
+        });
+    },
+    getLanse() {
+      //获取内页栏目
+      this.axios
+        .post(ip + "/unauth/column/selectChild", { id: this.list[0].id })
+        .then(res => {
+          console.log(res);
+          this.lanse = res.data.data;
+          console.log("这是栏目题", this.lanse);
+          
         });
     },
     toNewPage(a) {

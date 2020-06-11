@@ -9,7 +9,12 @@
       v-for="item in list"
       :key="item.id"
       @click="toListPage(item.id,item.name)"
+     v-if="item.name!=='图书馆'&&item.name!=='档案馆'"
     >{{item.name}}</van-col>
+    <van-col span="24" class="item" v-if="list[0].id===54" @click="toGuan(45,list[0].name)">图书馆  </van-col>   
+    <van-col span="24" class="item" v-if="list[1].id===55"  @click="toGuan(46,list[1].name)"> 档案馆   </van-col> 
+     <!--<route-link :to="{path:'/departmentHome',query:{siteId:45}}">   </route-link>   -->
+
   </van-row>
   <!-- 学校概况↑ -->
 </template>
@@ -20,6 +25,7 @@ export default {
   components: {},
   data() {
     return {
+      listLoading:true,
       list: [],
       name: ""
     };
@@ -31,18 +37,27 @@ export default {
       return formatDate(date, "yyyy/MM/dd");
     }
   },
-//   created() {
-//     this.getTitle();
-//   },
-  updated(){
-	  this.getTitle()
-  },
-  mounted() {
+  //  watch: {
+  //     '$route'(to, from) {
+  //       this.$router.go(0);
+  //     }
+  //   },
+  created() {
     this.getTitle();
   },
+  // updated(){
+	//   this.getTitle()
+  // },
+  // beforeUpdate(){
+  //   this.getTitle()
+  // },
+  // mounted() {
+  //   this.getTitle();
+  // },
   methods: {
     getTitle() {
-		console.log('出发了')
+    // console.log('出发了')
+    this.listLoading=true;
       this.axios
         .post(ip + "/unauth/column/selectChild", { id: this.$route.query.id })
         .then(res => {
@@ -51,6 +66,7 @@ export default {
           this.name = this.$route.query.name;
           console.log(this.name);
         });
+        this.listLoading=false
     },
     toListPage(id, name) {
       //跳转至列表页
@@ -68,6 +84,16 @@ export default {
         path: "/secondaryHome/details",
         query: {
           id: id
+        }
+      });
+    },
+    toGuan(id,name) {
+      //跳转至详情页
+      this.$router.push({
+        path: "/departmentHome",
+        query: {
+          id: id,
+          name:name
         }
       });
     }

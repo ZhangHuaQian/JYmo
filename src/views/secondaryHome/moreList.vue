@@ -3,20 +3,13 @@
     <van-row class="news">
       <van-col :span="24">
         <van-row style="font-size: 0;">
-          <img src="../../assets/secondaryHome/qe.png">
+          <img :src="list[0].image" />
         </van-row>
       </van-col>
       <van-col class="news-content" :span="24">
         <van-row class="news-content-item">
-          <h4
-            class="title van-ellipsis"
-          >学校组织师生收看庆祝中华人民共和国成立70周年大会</h4>
-          <p class="van-multi-ellipsis--l2">
-            盛世华诞，祝福祖国繁荣昌盛。10月1日，学校组织仙葫和五合校区师生收看庆祝中华人民共和国成立70周年大会盛况。
-            学校师生齐聚一堂，认真聆听习总书记讲话，感受新中国成立70年的光辉...盛世华诞，祝福祖国繁荣昌盛。10月1日，
-            学校组织仙葫和五合校区师生收看庆祝中华人民共和国成立70周年大会盛况。学校师生齐聚一堂，认真聆听习总书记讲话，
-            感受新中国成立70年的光辉...
-          </p>
+          <h4 class="title van-ellipsis">{{list[0].title}}</h4>
+          <p class="van-multi-ellipsis--l2">{{list[0].subTitle}}</p>
           <!-- <span>03/05</span> -->
         </van-row>
       </van-col>
@@ -35,7 +28,7 @@
 				</el-col>
       </el-row>-->
       <van-row class="xwzx-newsList">
-        <van-row v-for="item in 6" :key="item" class="xwzx-newsList-item">
+        <van-row v-for="(item,index) in list" :key="index" v-if="index>0" class="xwzx-newsList-item">
           <van-row :gutter="20">
             <!-- <el-col class="xwzx-newsList-item-dataTime" :xs="4" :md="4">
 							<div class="childDiv childDiv1">
@@ -45,17 +38,28 @@
 								<span class="span2">2020-02</span>van
 							</div>
             </el-col>-->
-            <van-col class="xwzx-newsList-item-content" :span="10">
-              <img src="@/assets/home/zhutu.png">
-            </van-col>
+            
+              <van-col class="xwzx-newsList-item-content" :span="10">
+                <img :src="item.image" />
+              </van-col>
 
-            <van-col class="xwzx-newsList-item-content" :span="14">
-              <div class="van-ellipsis">广西警察学院疫情防控工作领导小组指挥部关于做好2020年春季学期师生返校和疫情防控工作有关要求的通告</div>
-              <p class="van-multi-ellipsis--l2">4月26日下午，学校组织宣传部、学工处、校团委等部门主要负责人，各党总支书记和副书记，思政课教师和辅导员（学管队长、班主任）等在长湖校区教学楼视频会议室收看了“周末理论大讲堂”第三讲活动直播。</p>
-              <van-row type="flex" justify="space-between">
-                <van-col span="12"><span style="font-size:12px">2020/02/26</span></van-col>
-                <van-col span="12"><span style="font-size:12px;display:flex;justify-content:flex-end">了解详情></span></van-col>
-              </van-row>
+              <van-col class="xwzx-newsList-item-content" :span="14">
+                <div class="van-ellipsis">{{item.title}}</div>
+                <p
+                  class="van-multi-ellipsis--l2"
+                >{{item.subTitle}}</p>
+                <van-row type="flex" justify="space-between">
+                  <van-col span="12">
+                    <span style="font-size:12px">{{  getMoment(item.modifyTime, 'YYYY-MM-DD') }}</span>
+                  </van-col>
+                  <van-col span="12">
+                    <span style="font-size:12px;display:flex;justify-content:flex-end" @click="toDetailPage(item.id,item.siteId)" >
+
+                      了解详情>
+                      </span>
+                  </van-col>
+                </van-row>
+              
             </van-col>
           </van-row>
           <van-divider />
@@ -67,6 +71,64 @@
 </template>
 
 <script>
+import { formatDate } from "@/common/date.js"; // 在组件中引用date.js
+import { serverip as ip } from "@/utils/serverIP";
+import moment from 'moment'
+moment.locale('zh-cn')
+export default {
+  data() {
+    return {
+      currentPage: 1,
+      jianjie: "",
+      list: [],
+      listLanse: [],
+      pageSize: 10
+    };
+  },
+  filters: {
+    // 时间格式自定义 只需把字符串里面的改成自己所需的格式
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, "yyyy/MM/dd");
+    }
+  },
+  mounted() {
+    
+    this.getlist();
+  },
+  methods: {
+    toDetailPage(id, siteId) {
+      //跳转至详情页
+      this.$router.push({
+        path: "/secondaryHome/details",
+        query: {
+          id: id,
+          siteId: siteId
+        }
+      });
+    },
+    getMoment(date, str) {
+      return moment(date).format(str)
+    },
+    getlist() {
+      //根据栏目id获取子栏目列表
+      console.log(this.$route.query.id, this.currentPage, this.pageSize);
+      this.axios
+        .post(ip + "/unauth/news/selectList", {
+          columnId: this.$route.query.id || this.$route.query.columnId,
+          // columnId: 72,
+          pageNum: this.currentPage,
+          pageSize: this.pageSize
+        })
+        .then(res => {
+          console.log("列表:", res);
+          this.list = res.data.data.data;
+          console.log("列表:", this.list);
+          // this.getlanse()
+        });
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>

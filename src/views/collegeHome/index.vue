@@ -518,7 +518,7 @@ export default {
       //获取栏目列表
       this.axios
         .post(ip + "/unauth/column/selectList", {
-          siteId: this.$route.query.id
+          siteId: this.$route.query.id||this.$route.query.siteId
         })
         .then(res => {
           this.list = res.data.data;

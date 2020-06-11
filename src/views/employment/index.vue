@@ -1,7 +1,7 @@
 <template>
 
   <div class="home-container">
-    <van-col span="24" class="title">{{name}}</van-col>
+    <!-- <van-col span="24" class="title">{{name}}</van-col> -->
     <van-row class="news-list">
       <van-col class="first-news" :span="24"  @click="toNewPages(news[0].id,news[0].siteId)">
         <van-row style="font-size: 0;" :span="24">
@@ -215,7 +215,7 @@ export default {
 		zhaosheng:[],
 		fudao:[],
     Jiuye:[],
-    name:$route.query.name
+    // name:$route.query.name
 	}
   },
   filters: {
@@ -241,7 +241,7 @@ export default {
 	  },
   		getList(){
   				  this.axios.post(ip+'/unauth/column/selectChild',
-  					{id:this.$route.query.id}
+  					{id:this.$route.query.columnId}
   				  ).then((res)=>{
   					  this.lanse=res.data.data
 					  this.getNews();
@@ -264,7 +264,7 @@ export default {
 					{columnId:this.lanse[1].id}
 				  ).then((res)=>{
 					  this.zhaosheng=res.data.data.data
-					   // console.log(this.zhaosheng)
+					   console.log(this.zhaosheng,'zhaos')
 				  })
 		},
 		getFudao(){ //获取栏目 就业辅导
@@ -272,7 +272,7 @@ export default {
 					{columnId:this.lanse[4].id}
 				  ).then((res)=>{
 					  this.fudao=res.data.data.data
-					   // console.log(this.fudao)
+					   console.log(this.fudao)
 				  })
 		},
 		getJiuye(){ //获取栏目 "就业政策"
