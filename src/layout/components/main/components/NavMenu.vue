@@ -87,6 +87,8 @@
       </van-grid> -->
       <!-- 导航栏结束 -->
 
+      <!-- 导航栏开始 -->
+
       <van-grid :column-num="3" >
         
         <van-grid-item icon="home" class="iconfont" class-prefix='icon'  :to="{path:'/home/index',query:{id:1}}" text="首页" >
@@ -145,6 +147,9 @@
         <van-grid-item icon="photo-o" @click="toNavigation(list[7].id,list[7].name)" text="公共服务" />
         <van-grid-item icon="photo-o" @click="toNavigation(list[8].id,list[8].name)" text="校园文化" />
       </van-grid> -->
+
+
+      <!-- 导航栏结束 -->
 
       <van-nav-bar :title="name" to="this.$router.go(-1)" left-arrow v-if="name == ''" />
     </van-row>

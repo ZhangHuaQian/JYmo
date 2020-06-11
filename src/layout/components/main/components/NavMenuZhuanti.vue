@@ -12,7 +12,7 @@
       <van-search v-if="!$route.meta.navBG" v-model="seach" shape="round" placeholder="请输入搜索关键词" />
       <div style="clear: both;"></div>
 
-      
+      <!-- 导航栏开始 -->
 
       <van-grid :column-num="3" >
         <!-- <van-grid-item icon="photo-o" :to="{path:'/home/index',query:{id:1}}" text="首页" />
@@ -24,6 +24,8 @@
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[6].id,name:list[6].name}}" text="队伍建设" />
         <van-grid-item icon="photo-o" :to="{path:'/Navigation/index',query:{id:list[7].id,name:list[7].name}}" text="公共服务" />
         <van-grid-item icon="photo-o"  :to="{path:'/Navigation/index',query:{id:list[8].id,name:list[8].name}}" text="校园文化" />  -->
+
+        
         
         <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" >
           <van-icon class="iconfont" class-prefix='icon' size="40px" name="kecheng" />
@@ -45,6 +47,8 @@
 
         
       </van-grid>
+
+      <!-- 导航栏结束 -->
       
 
       <van-nav-bar :title="name" to="this.$router.go(-1)" left-arrow v-if="name == ''" />
