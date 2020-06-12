@@ -41,11 +41,23 @@
 
         <van-row style="padding-bottom: 12px;color:rgba(80,80,80,1);font-size:16px;">
           <van-col :span="24">
-            <a style="line-height:30px;">上一篇：爱心企业向我校捐赠防疫物资</a>
+            <router-link
+              :to="{path:'/secondaryHome/details',query:{id:prefix.id,siteId:prefix.siteId,columnId:prefix.columnId}}"
+              style="line-height:30px;"
+              v-if="prefix.title"
+            >
+              <a>上一篇：{{prefix.title}}</a>
+            </router-link>
           </van-col>
 
           <van-col :span="24">
-            <a style="line-height:30px;">下一篇：学校召开加强新型冠状病毒肺炎疫情防控工作暨新学期工作布置网络会议</a>
+            <router-link
+              :to="{path:'/secondaryHome/details',query:{id:suffix.id,siteId:suffix.siteId,columnId:suffix.columnId}}"
+              style="line-height:30px;"
+              v-if="suffix.title"
+            >
+              <a>下一篇：{{suffix.title}}</a>
+            </router-link>
           </van-col>
         </van-row>
       </van-col>
@@ -64,29 +76,60 @@
             <van-col
               class="others-news-item"
               :span="11"
-              style="background:rgba(255,255,255,1);padding:10px;margin:5px"
-              v-for="(item,index) in relateList"
-              :key="index"
+              style="background:rgba(255,255,255,1);padding:10px;margin:9px"
             >
-              <div style="position: relative;">
-                <div style="width: 35vw;height: 28vw;border: 1px solid #C1C1C1;margin: 0 auto;">
-                  <img style="width: 100%;" :src="item.image" />
-                </div>
-
-                <div
-                  style="color:rgba(51,51,51,1);font-weight:bold;line-height:36px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;padding:5px"
-                >{{item.title}}</div>
-                <div
-                  style="color:rgba(80,80,80,1);margin-top0.5rem!important:400;padding:5px; text-overflow: -o-ellipsis-lastline;padding-bottom: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;"
-                >{{item.subTitle}}</div>
-              </div>
+              <van-col :span="24" style="padding:0;text-align: center;">
+                <van-col :span="24" style="padding:0">
+                  <van-image
+                    width="100%"
+                    height="100%"
+                    style=""
+                    cover
+                    v-if="xiangList[0].image"
+                    :src="xiangList[0].image"
+                  />
+                </van-col>
+                <van-col style="padding:0" :span="24">
+                  <van-col style="padding:0" :span="24">
+                    
+                      <p class="van-ellipsis" style="font-weight:800">{{xiangList[0].title}}</p>
+                    
+                    
+                  </van-col>
+                  <van-col style="padding:0">
+                    <p class="van-multi-ellipsis--l2" style="padding：5px" >{{xiangList[0].subTitle}}</p>
+                  </van-col>
+                </van-col>
+              </van-col>
             </van-col>
+
+             <van-col
+              class="others-news-item"
+              :span="11"
+              style="background:rgba(255,255,255,1);padding:10px;margin:5px"
+            >
+              <van-col :span="24" style="padding:0;text-align: center;">
+                <van-col :span="24" style="padding:0">
+                  <van-image
+                    width="100%"
+                    height="100%"
+                    cover
+                    v-if="xiangList[1].image"
+                    :src="xiangList[1].image"
+                  />
+                </van-col>
+                <van-col style="padding:0" :span="24">
+                  <van-col style="padding:0" :span="24">
+                    <p class="van-ellipsis" style="font-weight:800">{{xiangList[1].title}}</p>
+                  </van-col>
+                  <van-col style="padding:0" :span="24">
+                    <p class="van-multi-ellipsis--l2" style="padding：5px" >{{xiangList[1].subTitle}}</p>
+                  </van-col>
+                </van-col>
+              </van-col>
+            </van-col>
+
+            
           </van-row>
         </van-row>
         <van-row style="width:100VW;margin-left:-3.3%">
@@ -179,7 +222,10 @@ export default {
     return {
       list: [],
       news: [],
-      relateList: []
+      relateList: [],
+      xiangList: "",
+      prefix: "",
+      suffix: ""
     };
   },
   created() {
@@ -188,6 +234,7 @@ export default {
   mounted() {
     this.getDetail();
     this.getHotNews();
+    this.getRelateList(), this.getPrefixSuffix(), this.getXiangNews();
     //  this.ImgSize();
   },
   updated() {
@@ -226,17 +273,17 @@ export default {
       //   document.querySelectorAll("img")[3].style.width="90vw"
       //   console.log(document.querySelectorAll("img"),"12323")
       // }
-      for (let i = 1; i < 10; i++) {
-        if (document.querySelectorAll("img").length - 4 > i) {
-          for (let j = 1; j <= i + 2; j++) {
-            console.log("触发了");
-            document.querySelectorAll("img")[j].style.width = "90vw";
-            // document.querySelectorAll("img")[j].style.marginLeft = "-10%";
-            document.querySelectorAll("img")[j].style.textAlign = 'center'
-            console.log(document.querySelectorAll("img"), "12323");
-          }
-        }
-      }
+      // for (let i = 1; i < 10; i++) {
+      //   if (document.querySelectorAll("img").length - 4 > i) {
+      //     for (let j = 1; j <= i + 2; j++) {
+      //       console.log("触发了");
+      //       document.querySelectorAll("img")[j].style.width = "90vw";
+      //       // document.querySelectorAll("img")[j].style.marginLeft = "-10%";
+      //       document.querySelectorAll("img")[j].style.textAlign = "center";
+      //       console.log(document.querySelectorAll("img"), "12323");
+      //     }
+      //   }
+      // }
     },
 
     getDetail() {
@@ -256,7 +303,7 @@ export default {
     getRelateList() {
       //获取相关资讯
       this.relateList = this.list.relateList;
-      console.log(this.list, "相关资讯数据", this.relateList);
+      // console.log(this.list, "相关资讯数据", this.relateList);
     },
     getHotNews() {
       this.axios
@@ -266,6 +313,41 @@ export default {
         .then(res => {
           this.news = res.data.data;
           // console.log('新闻详情：',this.news)
+        });
+    },
+    //相关资讯
+    getXiangNews() {
+      this.axios
+        .post(ip + "/unauth/news/selectRelatedNews", {
+          id: this.$route.query.id,
+          siteId: this.$route.query.siteId,
+          columnId: this.$route.query.columnId
+        })
+        .then(res => {
+          this.listSec = res.data.data;
+          this.xiangList = this.listSec;
+          console.log("相关资讯：", this.xiangList, this.listSec);
+
+          // console.log('相关资讯55',res)
+        });
+    },
+    //相关资讯2
+    getXianGuanNews() {
+      this.xiangList = this.listSec.relateList;
+    },
+    getPrefixSuffix() {
+      const data = {
+        id: this.$route.query.id,
+        siteId: this.$route.query.siteId,
+        columnId: this.$route.query.columnId
+      };
+      this.axios
+        .post(ip + "/unauth/news/selectPrefixSuffix", { ...data })
+        .then(res => {
+          console.log(res, "xiayitiao");
+          this.prefix = res.data.data.prefix;
+          this.suffix = res.data.data.suffix;
+          console.log(this.prefix, "prefix", this.suffix);
         });
     }
   }
@@ -279,6 +361,7 @@ export default {
 img {
   width: 90vw;
   height: 100%;
+ 
 }
 %icon {
   display: block;

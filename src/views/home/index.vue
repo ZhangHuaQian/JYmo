@@ -59,7 +59,7 @@
                 </van-col>
               </van-row>
               <van-row class="wrapper">
-                <div class="list" @click="toDetailPage(list[0].id,list[0].siteId)">
+                <div class="list" @click="toDetailPage(list[0].id,list[0].siteId,list[0].columnId)">
                   <van-col class="wrapper-item" :span="24">
                     <van-col :span="10">
                       <img :src="list[0].image" />
@@ -94,7 +94,7 @@
                     :key="index"
                     class="list-item"
                     v-if="index>0"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -209,7 +209,7 @@
                     v-for="(item,index) in listFirst"
                     :key="index"
                     class="list-item"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -247,7 +247,7 @@
                     v-for="(item,index) in listSecond"
                     :key="index"
                     class="list-item"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -286,7 +286,7 @@
                     v-for="(item,index) in listThrd"
                     :key="index"
                     class="list-item"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -323,7 +323,7 @@
                     v-for="(item,index) in listFour"
                     :key="index"
                     class="list-item"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -360,7 +360,7 @@
                     v-for="(item,index) in listFive"
                     :key="index"
                     class="list-item"
-                    @click="toDetailPage(item.id,item.siteId)"
+                    @click="toDetailPage(item.id,item.siteId,item.columnId)"
                   >
                     <van-col :span="1" style="margin-top:10px">
                       <i class="list-item-point">·</i>
@@ -649,13 +649,14 @@ export default {
         }
       });
     },
-    toDetailPage(id, siteId) {
+    toDetailPage(id, siteId,columnId) {
       //跳转至详情页
       this.$router.push({
         path: "/secondaryHome/details",
         query: {
           id: id,
-          siteId: siteId
+          siteId: siteId,
+          columnId:columnId
         }
       });
     },
