@@ -66,7 +66,7 @@
 
                   <van-col style="display:block" :span="24">
                     <router-link
-                      :to="{path:'/secondaryHome/details',query:{id:listnews[0].id,siteId:listnews[0].siteId}}"
+                      :to="{path:'/secondaryHome/details',query:{id:listnews[0].id,siteId:listnews[0].siteId,columnId:listnews[0].columnId}}"
                     >
                       <p
                         style="margin-top:-2%;margin-left:3%;font-size:18px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;"
@@ -98,7 +98,7 @@
                     <i class="list-item-point" style="margin: 0">·</i>
                   </van-col>-->
                   <router-link
-                    :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId}}"
+                    :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId,columnId:item.columnId}}"
                   >
                     <van-col
                       :span="2"
@@ -146,7 +146,7 @@
               <div class="list">
                 <van-row v-for="item in listnewsFour" :key="item.id" class="list-item">
                   <router-link
-                    :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId}}"
+                    :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId,columnId:item.columnId}}"
                   >
                     <van-col
                       :span="2"
@@ -195,7 +195,7 @@
               <div class="list">
                 
                 <router-link
-                :to="{path:'/secondaryHome/details',query:{id:listnewsThr[0].id,siteId:listnewsThr[0].siteId}}">
+                :to="{path:'/secondaryHome/details',query:{id:listnewsThr[0].id,siteId:listnewsThr[0].siteId,columnId:listnewsThr[0].columnId}}">
                 <van-col class="wrapper-item" :span="24">
                   <van-col :span="24">
                     <img :src="listnewsThr[0].image" />
@@ -231,7 +231,7 @@
 
                 >
                 <router-link
-                :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId}}">
+                :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId,columnId:item.columnId}}">
                   <!-- <van-col :span="1" style="margin-top:10px">
                     <i class="list-item-point" style="margin: 0">·</i>
                   </van-col>-->
@@ -286,7 +286,7 @@
 
                 <van-row v-for="item in listnewsSec" :key="item.id" class="list-item">
                   <router-link
-                  :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId}}">
+                  :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId,columnId:item.columnId}}">
                   <van-col
                     :span="2"
                     style="height:50px;"
@@ -419,7 +419,7 @@
             style="margin-top:20px;margin-left:11px;margin-riglht:5px;background:rgba(255,255,255,1);padding:12px"
           >
           <router-link
-                :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId}}">
+                :to="{path:'/secondaryHome/details',query:{id:item.id,siteId:item.siteId,columnId:item.columnId}}">
             <img :src="item.image" />
             <van-row class="tzgg-images-item-content">
               <h4

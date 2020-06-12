@@ -7,7 +7,7 @@
     </van-row>
 
     <van-divider />
-    <van-row v-for="item in list" :key="item.id" @click="toDetailPage(item.id,item.siteId)">
+    <van-row v-for="item in list" :key="item.id" @click="toDetailPage(item.id,item.siteId,item.columnId)">
       <van-row gutter="24">
         <van-col :span="1">
           <div class="ht" />
@@ -49,13 +49,14 @@ export default {
     this.getlist(), this.getdh();
   },
   methods: {
-    toDetailPage(id, siteId) {
+    toDetailPage(id, siteId,columnId) {
       //跳转至详情页
       this.$router.push({
         path: "/secondaryHome/details",
         query: {
           id: id,
-          siteId: siteId
+          siteId: siteId,
+          columnId:columnId
         }
       });
     },

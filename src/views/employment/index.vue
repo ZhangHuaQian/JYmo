@@ -15,7 +15,7 @@
 
       <van-col v-for="(item,index) in news" :key="item.id" class="others-news" :span="24" v-if="index>0">
         <van-row class="others-news-item" :gutter="24">
-          <div to="/Details" tag="a" @click="toNewPages(item.id,item.siteId)">
+          <div to="/Details" tag="a" @click="toNewPages(item.id,item.siteId,item.columnId)">
             <van-col :span="16">
               <p class="van-ellipsis" style="font-size:18px;">{{item.title}}</p>
             </van-col>
@@ -49,7 +49,7 @@
 		   @click="moreNewsList(lanse[1].id,lanse[1].name)"
         >更多></van-col>
       </van-row>
-      <van-col v-for="item in zhaosheng" :key="item.id" :span="24" style="background:rgba(255,255,255,1);"  @click="toNewPages(item.id,item.siteId)">
+      <van-col v-for="item in zhaosheng" :key="item.id" :span="24" style="background:rgba(255,255,255,1);"  @click="toNewPages(item.id,item.siteId,item.columnId)">
         <van-row>
           <van-col :span="2" style="height:50px;" type="flex" justify="center" align="center">
             <div
@@ -99,7 +99,7 @@
         </van-row>
         <van-row class="wrapper">
           <div class="list">
-            <van-row v-for="item in Jiuye" :key="item.id" class="list-item"  @click="toNewPages(item.id,item.siteId)">
+            <van-row v-for="item in Jiuye" :key="item.id" class="list-item"  @click="toNewPages(item.id,item.siteId,item.columnId)">
               <van-col :span="1" style="margin-top:10px">
                 <i class="list-item-point">·</i>
               </van-col>
@@ -137,7 +137,7 @@
         </van-row>
         <van-row class="wrapper">
           <div class="list">
-            <van-row v-for="item in fudao" :key="item.id" class="list-item"  @click="toNewPages(item.id,item.siteId)">
+            <van-row v-for="item in fudao" :key="item.id" class="list-item"  @click="toNewPages(item.id,item.siteId,item.columnId)">
               <van-col :span="1" style="margin-top:10px">
                 <i class="list-item-point">·</i>
               </van-col>
@@ -284,12 +284,13 @@ export default {
 				  })
 		},
 		//跳转到新闻内页
-		toNewPages(id,siteId){
+		toNewPages(id,siteId,columnId){
 		this.$router.push({
 		          path: '/Details',
 		          query: {
 		            id: id,
-					siteId:siteId
+          siteId:siteId,
+          columnId:columnId
 		          }
 		        })
 		  },

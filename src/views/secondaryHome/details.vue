@@ -1,42 +1,27 @@
 <template>
+
   <div class="home-container">
-    <!-- <van-row>
-			<div style="color:rgba(102,102,102,1);margin-bottom: 20px;">当前位置：5343434</div>
-    </el-row>-->
+    
     <van-row class="news-list" :gutter="24">
       <van-col class="first-news" :span="24" style="padding:0 20px">
         <van-row class="first-news-title">
           <p
             style="font-size:18px;font-weight:bold;line-height:24px;color:rgba(51,51,51,1);"
           >{{list.title}}</p>
+
           <p
             style="font-weight:400;color:rgba(153,153,153,1);line-height:36px;"
           >发布日期：{{list.modifyTime}}</p>
         </van-row>
-        <!--        <van-row v-for="item in 2" :key="item" style="font-size: 0;margin-top:10px">
-          <img src="../../assets/secondaryHome/fk.png">
-        </van-row>-->
-        <van-row v-html="list.content">
-          <div>{{list.content}}</div>
 
-          <!--          <p style="font-size:16px;color:rgba(51,51,51,1);line-height:36px;text-indent:2em">
-			 
-            为切实加强新型冠状病毒感染的肺炎疫情防控工作，更好地保障全校师生身体健康和生命安全，根据《教育部关于2020年春季学期延期开学的通知》（教电〔2020〕37号）、
-            《自治区人民政府办公厅关于延迟广西区内企业复工、学校开学等有关事项的通知》（厅函〔2020〕12号）、《广西壮族自治区新型冠状病毒感染的肺炎疫情防控工作领导小组指挥部令第 4 号》
-            和教育部、教育厅视频会议的要求，经学校研究决定，现就有关工作通告如下： 一、全体学生不得提前返校
-          </p>
-          <p>（一）2020年春季学期开学时间不早于2020年2月24日，具体开学时间和有关安排另行通知。</p>
-          <p>
-            （二）开学前14天曾在湖北省等疫情高发地区停留（居住、旅游或因转机/车短暂停留）的学生，正在按照规定要求进行集中隔离观察或居家医学观察的学生，有发热、咳嗽、乏力、胸闷等症状者的学生
-            ，暂时不要返回学校。上述学生要主动将有关情况报告所在学院。返校时间另行通知。
-          </p>（三）各学院要采取“人盯人”措施，全面摸清、准确掌握学生所在地区、健康状况等信息，迅速将学校关于不得提
-          依法追究责任，属学校教职工的扣发单位和个人绩效奖金。 学校总值班电话：0771-5616000。 校纪委监督举报邮箱：gxjcxyjw@163.com。
-          <p>（四）各学院要采取“人盯人”措施，全面摸清、准确掌握学生所在地区、健康状况等信息，迅速将学校关于不得提</p>依法追究责任，属学校教职工的扣发单位和个人绩效奖金。 学校总值班电话：0771-5616000。 校纪委监督举报邮箱：gxjcxyjw@163.com。
-          <p>
-            （五）各学院要采取“人盯人”措施，全面摸清、准确掌握学生所在地区、健康状况等信息，迅速将学校关于不得提
-            依法追究责任，属学校教职工的扣发单位和个人绩效奖金。 学校总值班电话：0771-5616000。 校纪委监督举报邮箱：gxjcxyjw@163.com。
-          </p>-->
+        <van-row v-html="list.content">
+         
         </van-row>
+        <!-- <van-row>
+          <van-col>
+            <div>{{list.content}}</div>
+          </van-col>
+        </van-row> -->
         <van-divider style="margin:0" />
 
         <van-row style="padding-bottom: 12px;color:rgba(80,80,80,1);font-size:16px;">
@@ -44,7 +29,7 @@
             <router-link
               :to="{path:'/secondaryHome/details',query:{id:prefix.id,siteId:prefix.siteId,columnId:prefix.columnId}}"
               style="line-height:30px;"
-              v-if="prefix.title"
+              
             >
               <a>上一篇：{{prefix.title}}</a>
             </router-link>
@@ -54,7 +39,7 @@
             <router-link
               :to="{path:'/secondaryHome/details',query:{id:suffix.id,siteId:suffix.siteId,columnId:suffix.columnId}}"
               style="line-height:30px;"
-              v-if="suffix.title"
+              
             >
               <a>下一篇：{{suffix.title}}</a>
             </router-link>
@@ -73,63 +58,82 @@
             >相关资讯</span>
           </van-col>
           <van-row :gutter="24">
-            <van-col
-              class="others-news-item"
-              :span="11"
-              style="background:rgba(255,255,255,1);padding:10px;margin:9px"
+            <router-link
+              :to="{path:'/secondaryHome/details',query:{id:xiangList[0].id,siteId:xiangList[0].siteId,columnId:xiangList[0].columnId}}"
             >
-              <van-col :span="24" style="padding:0;text-align: center;">
-                <van-col :span="24" style="padding:0">
-                  <van-image
-                    width="100%"
-                    height="100%"
-                    style=""
-                    cover
-                    v-if="xiangList[0].image"
-                    :src="xiangList[0].image"
-                  />
-                </van-col>
-                <van-col style="padding:0" :span="24">
-                  <van-col style="padding:0" :span="24">
-                    
-                      <p class="van-ellipsis" style="font-weight:800">{{xiangList[0].title}}</p>
-                    
-                    
+              <van-col
+                class="others-news-item"
+                :span="11"
+                style="background:rgba(255,255,255,1);padding:10px;margin:9px"
+              >
+                <van-col :span="24" style="padding:0;text-align: center;">
+                  <van-col :span="24" style="padding:0">
+                    <van-image
+                      width="100%"
+                      height="100%"
+                      style
+                      cover
+                      v-if="xiangList[0].image"
+                      :src="xiangList[0].image"
+                    />
                   </van-col>
-                  <van-col style="padding:0">
-                    <p class="van-multi-ellipsis--l2" style="padding：5px" >{{xiangList[0].subTitle}}</p>
+                  <van-col style="padding:0" :span="24">
+                    <van-col style="padding:0" :span="24">
+                      <p
+                        class="van-ellipsis"
+                        style="font-weight:800"
+                        v-if="xiangList[0].title"
+                      >{{xiangList[0].title}}</p>
+                    </van-col>
+                    <van-col style="padding:0">
+                      <p
+                        class="van-multi-ellipsis--l2"
+                        style="padding：5px"
+                        v-if="xiangList[0].subTitle"
+                      >{{xiangList[0].subTitle}}</p>
+                    </van-col>
                   </van-col>
                 </van-col>
               </van-col>
-            </van-col>
+            </router-link>
 
-             <van-col
-              class="others-news-item"
-              :span="11"
-              style="background:rgba(255,255,255,1);padding:10px;margin:5px"
+            <router-link
+              :to="{path:'/secondaryHome/details',query:{id:xiangList[1].id,siteId:xiangList[1].siteId,columnId:xiangList[1].columnId}}"
             >
-              <van-col :span="24" style="padding:0;text-align: center;">
-                <van-col :span="24" style="padding:0">
-                  <van-image
-                    width="100%"
-                    height="100%"
-                    cover
-                    v-if="xiangList[1].image"
-                    :src="xiangList[1].image"
-                  />
-                </van-col>
-                <van-col style="padding:0" :span="24">
-                  <van-col style="padding:0" :span="24">
-                    <p class="van-ellipsis" style="font-weight:800">{{xiangList[1].title}}</p>
+              <van-col
+                class="others-news-item"
+                :span="11"
+                style="background:rgba(255,255,255,1);padding:10px;margin:5px"
+              >
+                <van-col :span="24" style="padding:0;text-align: center;">
+                  <van-col :span="24" style="padding:0">
+                    <van-image
+                      width="100%"
+                      height="100%"
+                      cover
+                      v-if="xiangList[1].image"
+                      :src="xiangList[1].image"
+                    />
                   </van-col>
                   <van-col style="padding:0" :span="24">
-                    <p class="van-multi-ellipsis--l2" style="padding：5px" >{{xiangList[1].subTitle}}</p>
+                    <van-col style="padding:0" :span="24">
+                      <p
+                        class="van-ellipsis"
+                        style="font-weight:800"
+                        v-if="xiangList[1].title"
+                      >{{xiangList[1].title}}</p>
+                    </van-col>
+                    <van-col style="padding:0" :span="24">
+                      <p
+                        class="van-multi-ellipsis--l2"
+                        style="padding：5px"
+                        v-if="xiangList[1].subTitle"
+                      >{{xiangList[1].subTitle}}</p>
+                    </van-col>
                   </van-col>
                 </van-col>
               </van-col>
-            </van-col>
-
-            
+            </router-link>
           </van-row>
         </van-row>
         <van-row style="width:100VW;margin-left:-3.3%">
@@ -165,7 +169,7 @@
                   <van-col :span="21">
                     <p
                       class="van-ellipsis ydtj_tit"
-                      style="color:rgba(80,80,80,1);font-size:20px;;"
+                      style="color:rgba(80,80,80,1);font-size:18px;;"
                     >{{item.title}}</p>
                   </van-col>
                 </van-row>
@@ -177,42 +181,15 @@
                 </van-row>
                 <van-divider dashed />
               </van-col>
-              <!-- <ul style="padding-right:20px;background:rgba(255,255,255,1);">
-                  <li style="list-style-type:none;">
-                    <div style="width:100%;height:5px"></div>
-                  </li>
-
-                  <li style>
-                    <p
-                      style="color:rgba(80,80,80,1);overflow:hidden;text-overflow: ellipsis;white-space: nowrap;font-size:12px;font-size:18px;"
-                    >学校召开加强新型冠状病毒肺炎疫情防控工作暨新学期工作布置网络会议</p>
-                    <span style="color:rgba(153,153,153,1);">2020-02-09 22:16:35</span>
-                  </li>
-                  <van-divider />
-                  <li>
-                    <p
-                      style="color:rgba(80,80,80,1);overflow:hidden;text-overflow: ellipsis;white-space: nowrap;font-size:12px;font-size:18px"
-                    >学校召开加强新型冠状病毒肺炎疫情防控工作暨新学期工作布置网络会议</p>
-                    <span style="color:rgba(153,153,153,1);">2020-02-09 22:16:35</span>
-                  </li>
-                  <van-divider />
-                  <li>
-                    <p
-                      style="color:rgba(80,80,80,1);overflow:hidden;text-overflow: ellipsis;white-space: nowrap;font-size:12px;font-size:18px"
-                    >学校召开加强新型冠状病毒肺炎疫情防控工作暨新学期工作布置网络会议</p>
-                    <span style="color:rgba(153,153,153,1);">2020-02-09 22:16:35</span>
-                  </li>
-                  <van-divider />
-                  <li style="list-style-type:none;">
-                    <div style="width:100%;height:5px"></div>
-                  </li>
-              </ul>-->
+             
             </van-row>
           </div>
         </van-row>
       </van-col>
     </van-row>
+    
   </div>
+  
 </template>
 
 <script>
@@ -228,9 +205,9 @@ export default {
       suffix: ""
     };
   },
-  created() {
-    this.getDetail();
-  },
+  // created() {
+  //   this.getDetail();
+  // },
   mounted() {
     this.getDetail();
     this.getHotNews();
@@ -247,12 +224,13 @@ export default {
     this.ImgSize();
   },
   methods: {
-    toDetails(id, siteId) {
+    toDetails(id, siteId, columnId) {
       this.$router.push({
         path: "/secondaryHome/details",
         query: {
           id: id,
-          siteId: siteId
+          siteId: siteId,
+          columnId: this.$route.query.columnId
         }
       });
     },
@@ -296,8 +274,8 @@ export default {
         })
         .then(res => {
           this.list = res.data.data;
-          console.log("新闻详情：", this.list);
-          this.getRelateList();
+          console.log("新闻详情：list", this.list);
+          // this.getRelateList();
         });
     },
     getRelateList() {
@@ -312,7 +290,7 @@ export default {
         })
         .then(res => {
           this.news = res.data.data;
-          // console.log('新闻详情：',this.news)
+          // console.log("新闻详情：74", this.news);
         });
     },
     //相关资讯
@@ -326,7 +304,7 @@ export default {
         .then(res => {
           this.listSec = res.data.data;
           this.xiangList = this.listSec;
-          console.log("相关资讯：", this.xiangList, this.listSec);
+          // console.log("相关资讯：", this.xiangList, this.listSec);
 
           // console.log('相关资讯55',res)
         });
@@ -344,10 +322,10 @@ export default {
       this.axios
         .post(ip + "/unauth/news/selectPrefixSuffix", { ...data })
         .then(res => {
-          console.log(res, "xiayitiao");
+          // console.log(res, "xiayitiao");
           this.prefix = res.data.data.prefix;
           this.suffix = res.data.data.suffix;
-          console.log(this.prefix, "prefix", this.suffix);
+          // console.log(this.prefix, "prefix", this.suffix);
         });
     }
   }
@@ -361,7 +339,6 @@ export default {
 img {
   width: 90vw;
   height: 100%;
- 
 }
 %icon {
   display: block;
