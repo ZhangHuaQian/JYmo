@@ -27,10 +27,14 @@
 
         
         
-        <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" >
+        <van-grid-item icon="photo-o" v-for="item in list" :key="item.id" :to="{path:item.url,query:{id:item.id,name:item.name}}" :text="item.name" >
           <van-icon class="iconfont" class-prefix='icon' size="40px" name="kecheng" />
           <van-col style="font-size:8px;margin-top:5px">{{item.name}}</van-col>
         </van-grid-item>
+         <!-- <van-grid-item v-if="item.name='公共服务'" icon="photo-o" v-for="item in list" :key="item.id" :to="" :text="item.name" >
+          <van-icon class="iconfont" class-prefix='icon' size="40px" name="kecheng" />
+          <van-col style="font-size:8px;margin-top:5px">{{item.name}}</van-col>
+        </van-grid-item> -->
         
         <!-- <van-grid-item  v-if="item.name!=='部门概况'&&item.name!=='工作职责'&&item.name!=='规章制度'" icon="photo-o" v-for="item in list" :key="item.id" :to="item.url" :text="item.name" />
         <van-grid-item v-if="list[1].name ==='部门概况'" icon="photo-o"  :to="{path:'/common/commonlist2?'}" text="部门概况" /> -->
@@ -73,19 +77,20 @@ export default {
   },
   created(){
     this.getList();
+    this.getLanmu()
   },
   mounted() {
-    this.getList();
+    // this.getList();
     this.toNewPage();
     this.getTitle(),
-    this.getLanmu(),
+    
     this.getLanse();
   },
-  // watch: {
-  //     '$route'(to, from) {
-  //       this.$router.go(0);
-  //     }
-  //   },
+  watch: {
+      '$route'(to, from) {
+        this.$router.go(0);
+      }
+    },
   methods: {
     getTitle() {
       this.name = this.$route.query.name;
@@ -104,29 +109,36 @@ export default {
       console.log(key, keyPath);
     },
     getList() {
-      this.axios
+      
+        this.axios
         .post(
-          ip + "/unauth/column/selectList",{siteId:this.$route.query.id||this.$route.query.siteId}
+          ip + "/unauth/column/selectList",{siteId:this.$route.query.siteId}
         )
         .then(res => {
           console.log(res, "导航栏");
           this.list = res.data.data;
           console.log("url列表", this.list);
         });
+
+      
+      
+        
+     
+      
     },
-    getLanmu() {
-      //获取栏目列表
-      this.axios
-        .post(ip + "/unauth/column/selectList", {
-          siteId: this.$route.query.id
-        })
-        .then(res => {
-          this.list = res.data.data;
-          console.log(list,'4444')
-          this.getLanse();
-          // console.log(res)
-        });
-    },
+    // getLanmu() {
+    //   //获取栏目列表
+    //   this.axios
+    //     .post(ip + "/unauth/column/selectList", {
+    //       siteId: this.$route.query.siteId
+    //     })
+    //     .then(res => {
+    //       this.list = res.data.data;
+    //       console.log(list,'4444')
+    //       this.getLanse();
+    //       // console.log(res)
+    //     });
+    // },
     getLanse() {
       //获取内页栏目
       this.axios

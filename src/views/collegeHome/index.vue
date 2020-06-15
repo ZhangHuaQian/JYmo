@@ -42,7 +42,7 @@
       <van-row gutter="24">
         <van-col style="margin-left:-3%">
           <van-row style="line-height: 2rem;position: relative;" class="tit">
-            <van-row style="border-bottom: 2px solid rgba(67,136,207,1);">
+            <van-row style="border-bottom: 2px solid rgba(67,136,207,1);" v-if="lanse[0].name">
               <van-col :span="8" class="tit_tit">
                 <span style="margin-left:20px">{{lanse[0].name}}</span>
               </van-col>
@@ -57,7 +57,7 @@
                 >更多></router-link>
               </van-col>
             </van-row>
-            <van-row class="wrapper" style="margin-top:20px;padding:10px">
+            <van-row class="wrapper" style="margin-top:20px;padding:10px" v-if="listnews[0].length>0">
               <div class="list">
                 <van-col class="wrapper-item" :span="24">
                   <van-col :span="24">
@@ -513,6 +513,11 @@ export default {
   mounted() {
     this.getLanmu();
   },
+  //  watch: {
+  //     '$route'(to, from) {
+  //       this.$router.go(0);
+  //     }
+  //   },
   methods: {
     getLanmu() {
       //获取栏目列表
@@ -523,7 +528,7 @@ export default {
         .then(res => {
           this.list = res.data.data;
           this.getLanse();
-          // console.log(res)
+          console.log(this.list,'45444')
         });
     },
     getLanse() {

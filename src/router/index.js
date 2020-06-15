@@ -124,7 +124,7 @@ const routes = [{
 	    name: 'commonList1',
 	    path: '/common/commonlist1',
 	    component: () =>
-	      import ('@/views/common/commonlist2'),
+	      import ('@/views/common/commonlist'),
 	    meta: { title: '通用列表页', banner: topSecondaryHome, navBG: navBG }
 	},
 	{

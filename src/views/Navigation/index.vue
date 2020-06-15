@@ -8,7 +8,7 @@
       class="item"
       v-for="item in list"
       :key="item.id"
-      @click="toListPage(item.id,item.name)"
+      @click="toListPage(item.id,item.name,item.siteId)"
      v-if="item.name!=='图书馆'&&item.name!=='档案馆'"
     >{{item.name}}</van-col>
     <van-col span="24" class="item" v-if="list[0].id===54" @click="toGuan(45,list[0].name)">图书馆  </van-col>   
@@ -37,11 +37,11 @@ export default {
       return formatDate(date, "yyyy/MM/dd");
     }
   },
-  //  watch: {
-  //     '$route'(to, from) {
-  //       this.$router.go(0);
-  //     }
-  //   },
+   watch: {
+      '$route'(to, from) {
+        this.$router.go(0);
+      }
+    },
   created() {
     this.getTitle();
   },
@@ -68,13 +68,14 @@ export default {
         });
         this.listLoading=false
     },
-    toListPage(id, name) {
+    toListPage(id, name,siteId) {
       //跳转至列表页
       this.$router.push({
         path: "/common/commonlist2",
         query: {
           id: id,
-          name: name
+          name: name,
+          siteId:siteId
         }
       });
     },

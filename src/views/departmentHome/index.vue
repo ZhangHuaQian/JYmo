@@ -567,9 +567,17 @@ export default {
       return formatDate(date, "yyyy/MM/dd");
     }
   },
-  mounted() {
-    this.getLanmu();
+  created(){
+     this.getLanmu();
   },
+  mounted() {
+   
+  },
+   watch: {
+      '$route'(to, from) {
+        this.$router.go(0);
+      }
+    },
   methods: {
     moreNewsList(id, name) {
       //栏目详情列表

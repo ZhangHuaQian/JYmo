@@ -170,16 +170,19 @@ export default {
       name:''
     };
   },
-  mounted() {
+  created(){
     this.getList();
+  },
+  mounted() {
+    // this.getList();
     this.toNewPage();
     this.getTitle();
   },
-  watch: {
-      '$route'(to, from) {
-        this.$router.go(0);
-      }
-    },
+  // watch: {
+  //     '$route'(to, from) {
+  //       this.$router.go(0);
+  //     }
+  //   },
   methods: {
     
     getTitle() {
@@ -199,16 +202,22 @@ export default {
       console.log(key, keyPath);
     },
     getList() {
-      this.axios
+
+
+    //  this.$route.siteId
+       this.axios
         .post(
-          ip + "/unauth/column/selectList"
-          // {id:this.id}
+          ip + "/unauth/column/selectList",
+          {id:this.$route.siteId}
         )
         .then(res => {
           console.log(res, "导航栏");
           this.list = res.data.data;
           console.log("url列表", this.list);
         });
+
+     
+      
     },
     toNewPage(a) {
       //页面跳转传参

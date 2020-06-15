@@ -52,7 +52,17 @@
       <el-tabs v-model="activeName" type="card">
         <el-tab-pane class="list-title" label="科研机构" name="first">
           <el-row>
-			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index>36"
+			  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index>36&&index<38"
+			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
+			  >
+				  <div @click="toNewpages(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  </el-col>
+				  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index>37&&index<39"
+			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
+			  >
+				  <div @click="toNewpage(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
+				  </el-col>
+				  <el-col  v-for="(item,index) in list" :key="index" :span="7" :offset="1"  v-if="index>38&&index<40"
 			  style="height: 10vw;background: #E0EAF5;margin-bottom: 2vw;"
 			  >
 				  <div @click="toNewpages(item.id,item.name)" style="font-size: 0.75rem;color: #347ADA;line-height: 10vw;margin: 0 auto;text-align: center;">{{item.name}}</div>
@@ -98,7 +108,8 @@ export default {
 		            path: '/departmentHome',
 		            query: {
 					  id: id,
-					  name:name
+					  name:name,
+					  siteId:id
 		            }
 		          })
 	  },
@@ -108,7 +119,8 @@ export default {
 	  		            path: '/college',
 	  		            query: {
 							id: id,
-							name:name
+							name:name,
+							siteId:id
 	  		            }
 	  		          })
 	  }
