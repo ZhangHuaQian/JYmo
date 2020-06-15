@@ -34,4 +34,5 @@ http://171.111.153.241:8095/unauth/news/selectList { columnId: 92  pageNum: 1 pa
 课程建设：/common/commonlist2/list2?siteId=&columnId=&columnName=&childId=
 教学科研：/common/commonlist2/list2?siteId=&columnId=&columnName=&childId=
 师资队伍：/common/commonlist2/list2?siteId=&columnId=&cloumnName=&childId=
+5436345
 
